@@ -7,12 +7,28 @@
 //
 
 import UIKit
+import MobileCoreServices
+//import AVFoundation
 
-class ReportViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate {
+class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePickerControllerDelegate,UIPickerViewDelegate,UITextFieldDelegate, UINavigationControllerDelegate,UITextViewDelegate {
     
     var pickerViewData = ["Puppy","Kitten","Rabbit", "Dog", "Duck","Parrot"]
     var pickerViewSelected : String = ""
+    var cameraImage : Bool?
     
+    var lostSelected = true
+    let foundPawSelected : UIImage = UIImage(named: "FOUND_PAW_SELECTED")!
+    let foundPaw : UIImage = UIImage(named: "FOUND_PAW")!
+    let lostPawSelected : UIImage = UIImage(named: "LOST_PAW_SELECTED")!
+    let lostPaw : UIImage = UIImage(named: "LOST_PAW")!
+
+   /*
+    //AVSession
+    let captureSession = AVCaptureSession()
+    var outputImage : AVCaptureStillImageOutput!
+    var captureDevice : AVCaptureDevice?
+    var previewLayer : AVCaptureVideoPreviewLayer?
+    */
     struct PetSet {
         
         var Status : String
@@ -23,19 +39,30 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIPickerView
         
     }
     
-    @IBOutlet weak var StatusOutlet: UISegmentedControl!
+    @IBOutlet weak var lostButton: UIButton!
+    @IBOutlet weak var foundButton: UIButton!
+    
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var PetTypePickerView: UIPickerView!
     @IBOutlet weak var PetNameOutLet: UITextField!
     @IBOutlet weak var PetDetailsOutlet: UITextView!
+    var PetImage : UIImage = UIImage(named: "No_Image_Paw")!
     @IBAction func SubmitAction(sender: UIButton) {
+        
+        var str = "FOUND"
+        if lostSelected {
+            str = "LOST"
+        }
         
         let Pet : PetSet = PetSet(
         
-            Status : StatusOutlet.titleForSegmentAtIndex(StatusOutlet.selectedSegmentIndex)!,
+            
+            
+            Status : str,//StatusOutlet.titleForSegmentAtIndex(StatusOutlet.selectedSegmentIndex)!,
             Type : pickerViewSelected,
             Name : PetNameOutLet.text! ,
             Details : PetDetailsOutlet.text,
-            Image: UIImage(named: "CatsAndDog")!
+            Image: PetImage//UIImage(named: "CatsAndDog")!
             
         )
         print(Pet)
@@ -60,10 +87,164 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIPickerView
         
     }
     
+    
+    @IBAction func LostPawAction(sender: AnyObject) {
+        
+        
+        if lostSelected {
+        lostButton.setImage(lostPawSelected, forState: .Normal)
+        }else{
+        lostButton.setImage(lostPaw, forState: .Normal)
+        lostSelected = !lostSelected
+        }
+        
+        if !lostSelected {
+            foundButton.setImage(foundPawSelected, forState: .Normal)
+            
+        }else{
+            foundButton.setImage(foundPaw, forState: .Normal)
+            
+        }
+    }
+    
+    @IBAction func FoundPawAction(sender: AnyObject) {
+        
+        lostSelected = !lostSelected
+        
+        
+        if lostSelected {
+            lostButton.setImage(lostPawSelected, forState: .Normal)
+        }else{
+            lostButton.setImage(lostPaw, forState: .Normal)
+        }
+        
+        if !lostSelected {
+            foundButton.setImage(foundPawSelected, forState: .Normal)
+            lostSelected = !lostSelected
+            
+        }else{
+            foundButton.setImage(foundPaw, forState: .Normal)
+            
+        }
+        
+    }
+    
+    
+    
+    
 
+    @IBAction func useCamera(sender: AnyObject) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(
+            UIImagePickerControllerSourceType.Camera) {
+                
+                let imagePicker = UIImagePickerController()
+                
+                imagePicker.sourceType =
+                    UIImagePickerControllerSourceType.Camera
+                imagePicker.mediaTypes = [kUTTypeImage as String]
+                imagePicker.allowsEditing = false
+                
+                self.presentViewController(imagePicker, animated: true, 
+                    completion: nil)
+                cameraImage = true
+        }
+    }
+    
+    @IBAction func useCameraRoll(sender: AnyObject) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(
+            UIImagePickerControllerSourceType.SavedPhotosAlbum) {
+                let imagePicker = UIImagePickerController()
+                
+                imagePicker.delegate = self
+                imagePicker.sourceType =
+                    UIImagePickerControllerSourceType.PhotoLibrary
+                imagePicker.mediaTypes = [kUTTypeImage as NSString as String ]
+                imagePicker.allowsEditing = false
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+                cameraImage = false
+                
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+    
+        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        
+        if mediaType == (kUTTypeImage as String) {
+            let image = info[UIImagePickerControllerOriginalImage]
+                as! UIImage
+            
+            imageView.image = image // GET IMAGE HERE <<<===
+            PetImage = image
+            
+            if (cameraImage == true) {
+                UIImageWriteToSavedPhotosAlbum(image, self,
+                    "image:didFinishSavingWithError:contextInfo:", nil)
+            }
+        }
+    }
+    
+    func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {
+        
+        if error != nil {
+            let alert = UIAlertController(title: "Save Failed",
+                message: "Failed to save image",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let cancelAction = UIAlertAction(title: "OK",
+                style: .Cancel, handler: nil)
+            
+            alert.addAction(cancelAction)
+            self.presentViewController(alert, animated: true,
+                completion: nil)
+        }
+    } 
 
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
+    func keyboardWillShow(sender: NSNotification) {
+        self.view.frame.origin.y = -150
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y = 0
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+       
+        textView.delegate = self
+        if textView.tag == 1 && textView.text == "Enter details here..."{
+            textView.text = ""
+        }
+        
+    }
+    
+    func textViewDidEndEditing(textView: UITextView){
+    
+        if textView.tag == 1 && textView.text == ""{
+            textView.text = "Enter details here..."
+        }
+        textView.resignFirstResponder()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "bg4.jpg")?.drawInRect(self.view.bounds)
@@ -71,23 +252,23 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIPickerView
         UIGraphicsEndImageContext()
         self.view.backgroundColor = UIColor(patternImage: image)
 
+        lostButton.setImage(lostPawSelected, forState: .Normal)
+        foundButton.setImage(foundPaw, forState: .Normal)
         
-
-        
+        imageView.image = UIImage(named: "No_Image_Paw")
         PetTypePickerView.dataSource = self
         PetTypePickerView.delegate = self
         pickerViewSelected = pickerViewData[0]
         
         PetDetailsOutlet.text = "Enter details here..."
         
-        self.PetNameOutLet.delegate = self
-        if(self.PetDetailsOutlet.focused){
-            PetDetailsOutlet.text = ""
-        }
+        PetDetailsOutlet.tag = 1
+        PetDetailsOutlet.delegate = self
+        
 
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -101,8 +282,9 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIPickerView
         return pickerViewData.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerViewData[row]
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let myString = NSAttributedString(string: pickerViewData[row], attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        return myString
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

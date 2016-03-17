@@ -153,12 +153,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-LC-ZuX">
-                                <rect key="frame" x="114" y="516" width="188" height="28"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Add a Picture">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-LC-ZuX">
+                                <rect key="frame" x="107" y="516" width="52" height="48"/>
+                                <state key="normal" title="Add a Picture" image="icon3.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="useCamera:" destination="wqT-0u-kdk" eventType="touchUpInside" id="sSR-51-0w5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRK-B9-eAd">
                                 <rect key="frame" x="158" y="596" width="97" height="26"/>
@@ -170,15 +172,9 @@
                                     <action selector="SubmitAction:" destination="wqT-0u-kdk" eventType="touchUpInside" id="oYv-7D-VI3"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MRQ-9T-hDl">
-                                <rect key="frame" x="107" y="123" width="203" height="29"/>
-                                <segments>
-                                    <segment title="Lost"/>
-                                    <segment title="Found"/>
-                                </segments>
-                            </segmentedControl>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQY-IF-3gS">
                                 <rect key="frame" x="103" y="188" width="206" height="129"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Details:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNO-ka-zzj">
                                 <rect key="frame" x="165" y="399" width="84" height="22"/>
@@ -186,15 +182,36 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon3.png" translatesAutoresizingMaskIntoConstraints="NO" id="MnY-dw-At3">
-                                <rect key="frame" x="174" y="540" width="65" height="55"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type of pet?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Me0-Us-qFa">
                                 <rect key="frame" x="160" y="174" width="96" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon3.png" translatesAutoresizingMaskIntoConstraints="NO" id="MnY-dw-At3">
+                                <rect key="frame" x="176" y="516" width="65" height="55"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnV-Zg-vhS">
+                                <rect key="frame" x="261" y="516" width="48" height="44"/>
+                                <state key="normal" title="Button" image="galleryIcon"/>
+                                <connections>
+                                    <action selector="useCameraRoll:" destination="wqT-0u-kdk" eventType="touchUpInside" id="XAZ-NF-IML"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C88-Xg-fHR">
+                                <rect key="frame" x="235" y="105" width="75" height="75"/>
+                                <state key="normal" title="Found" image="FOUND_PAW"/>
+                                <connections>
+                                    <action selector="FoundPawAction:" destination="wqT-0u-kdk" eventType="touchUpInside" id="Gh7-lT-en2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPO-Fx-bk6">
+                                <rect key="frame" x="103" y="105" width="75" height="75"/>
+                                <state key="normal" title="Lost" image="LOST_PAW"/>
+                                <connections>
+                                    <action selector="LostPawAction:" destination="wqT-0u-kdk" eventType="touchUpInside" id="Btp-de-maL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -203,7 +220,9 @@
                         <outlet property="PetDetailsOutlet" destination="NNb-4j-XNG" id="vWG-Dj-odZ"/>
                         <outlet property="PetNameOutLet" destination="Jx9-vB-jgV" id="UfU-U9-tmk"/>
                         <outlet property="PetTypePickerView" destination="kQY-IF-3gS" id="nfX-ed-JGX"/>
-                        <outlet property="StatusOutlet" destination="MRQ-9T-hDl" id="Mli-h3-ewx"/>
+                        <outlet property="foundButton" destination="C88-Xg-fHR" id="oM0-jv-kNd"/>
+                        <outlet property="imageView" destination="MnY-dw-At3" id="VlI-7w-6Em"/>
+                        <outlet property="lostButton" destination="jPO-Fx-bk6" id="BD6-2c-mbA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZf-SW-MvD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -298,6 +317,9 @@
     </scenes>
     <resources>
         <image name="CatsAndDog" width="900" height="675"/>
+        <image name="FOUND_PAW" width="626" height="626"/>
+        <image name="LOST_PAW" width="626" height="626"/>
+        <image name="galleryIcon" width="300" height="300"/>
         <image name="icon3.png" width="256" height="256"/>
         <image name="paw_icon" width="80" height="73"/>
     </resources>
