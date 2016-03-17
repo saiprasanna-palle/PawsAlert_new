@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6711C6C21C9A3DD6005FC234 /* PetsInfoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6711C6C11C9A3DD6005FC234 /* PetsInfoDisplay.swift */; };
+		6711C6C41C9A4FB6005FC234 /* PetDetailInfoDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6711C6C31C9A4FB6005FC234 /* PetDetailInfoDisplayViewController.swift */; };
 		6713ACB31C7C0740004654F9 /* PetDetailControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6713ACB21C7C0740004654F9 /* PetDetailControllerViewController.swift */; };
 		6713ACB61C7C1F94004654F9 /* icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6713ACB41C7C1F94004654F9 /* icon.jpeg */; };
 		6713ACB71C7C1F94004654F9 /* icon2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6713ACB51C7C1F94004654F9 /* icon2.jpeg */; };
@@ -70,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6711C6C11C9A3DD6005FC234 /* PetsInfoDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetsInfoDisplay.swift; sourceTree = "<group>"; };
+		6711C6C31C9A4FB6005FC234 /* PetDetailInfoDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetDetailInfoDisplayViewController.swift; sourceTree = "<group>"; };
 		6713ACB21C7C0740004654F9 /* PetDetailControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetDetailControllerViewController.swift; sourceTree = "<group>"; };
 		6713ACB41C7C1F94004654F9 /* icon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon.jpeg; sourceTree = "<group>"; };
 		6713ACB51C7C1F94004654F9 /* icon2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon2.jpeg; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				BC3803031C5DA5E100CC6A20 /* AppDelegate.swift */,
 				BC3803051C5DA5E100CC6A20 /* ViewController.swift */,
 				BC3803071C5DA5E100CC6A20 /* Main.storyboard */,
+				6711C6C31C9A4FB6005FC234 /* PetDetailInfoDisplayViewController.swift */,
+				6711C6C11C9A3DD6005FC234 /* PetsInfoDisplay.swift */,
 				6713ACBA1C7C2300004654F9 /* MenuViewController.swift */,
 				6713ACB21C7C0740004654F9 /* PetDetailControllerViewController.swift */,
 				67337F8A1C7BEBA8000367F9 /* PetTableViewCell.swift */,
@@ -406,11 +412,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC4615A21C600D79007DF074 /* ReportViewController.swift in Sources */,
+				6711C6C41C9A4FB6005FC234 /* PetDetailInfoDisplayViewController.swift in Sources */,
 				BC3803061C5DA5E100CC6A20 /* ViewController.swift in Sources */,
 				BC38035E1C5DA8EE00CC6A20 /* MainTableViewController.swift in Sources */,
 				6713ACBB1C7C2300004654F9 /* MenuViewController.swift in Sources */,
 				6713ACB31C7C0740004654F9 /* PetDetailControllerViewController.swift in Sources */,
 				67337F8B1C7BEBA8000367F9 /* PetTableViewCell.swift in Sources */,
+				6711C6C21C9A3DD6005FC234 /* PetsInfoDisplay.swift in Sources */,
 				BC3803041C5DA5E100CC6A20 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

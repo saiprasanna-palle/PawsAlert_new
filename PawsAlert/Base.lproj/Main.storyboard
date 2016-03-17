@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iwh-TG-cjW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Kqp-X9-yGp">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -208,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZf-SW-MvD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290.5" y="1434.5"/>
+            <point key="canvasLocation" x="2102.5" y="1434.5"/>
         </scene>
         <!--Main Table View Controller-->
         <scene sceneID="70d-np-NI7">
@@ -220,7 +220,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myPetCell" id="t18-1h-9MH" customClass="PetTableViewCell" customModule="PawsAlert" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="375" height="75"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t18-1h-9MH" id="ZkZ-Sw-Xyx">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
@@ -276,6 +276,93 @@
             </objects>
             <point key="canvasLocation" x="381.5" y="575.5"/>
         </scene>
+        <!--Pets Info Display-->
+        <scene sceneID="Ef2-Rm-SIe">
+            <objects>
+                <tableViewController id="kKl-PA-P6E" customClass="PetsInfoDisplay" customModule="PawsAlert" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="129" sectionHeaderHeight="28" sectionFooterHeight="28" id="dsh-gl-85z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pfcell" rowHeight="129" id="ToX-Bq-Gti" customClass="PetTableViewCell" customModule="PawsAlert" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="414" height="129"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ToX-Bq-Gti" id="5Y0-f3-gkn">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ms8-V5-AQ3" customClass="PFImageView">
+                                            <rect key="frame" x="16" y="8" width="120" height="93"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSR-U7-Neg">
+                                            <rect key="frame" x="169" y="20" width="129" height="23"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1S-sN-d0E">
+                                            <rect key="frame" x="169" y="51" width="158" height="25"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="PetDetail" destination="v1S-sN-d0E" id="ZRX-8c-DBs"/>
+                                    <outlet property="PetImage" destination="ms8-V5-AQ3" id="PPx-Pc-lx0"/>
+                                    <outlet property="PetName" destination="DSR-U7-Neg" id="qCA-lH-VGp"/>
+                                    <segue destination="tb3-oi-SBB" kind="show" identifier="petDetail" id="7yH-lE-uaz"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kKl-PA-P6E" id="jeU-Mp-Og2"/>
+                            <outlet property="delegate" destination="kKl-PA-P6E" id="XVe-b9-W4I"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ws1-sk-dg8"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A9r-xq-zwY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="285" y="1413"/>
+        </scene>
+        <!--Pet Detail Info Display View Controller-->
+        <scene sceneID="Dr3-OD-DMJ">
+            <objects>
+                <viewController id="tb3-oi-SBB" customClass="PetDetailInfoDisplayViewController" customModule="PawsAlert" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ggf-sj-eZZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="DQt-N1-wLY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WKq-2i-IsC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Details" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="O7V-9L-OWN">
+                                <rect key="frame" x="20" y="431" width="357" height="227"/>
+                                <color key="backgroundColor" red="0.9817246864418957" green="1" blue="0.92184040060799366" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aMI-Ko-xQG">
+                                <rect key="frame" x="20" y="86" width="374" height="267"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="details" destination="O7V-9L-OWN" id="Qj6-sH-O0G"/>
+                        <outlet property="img" destination="aMI-Ko-xQG" id="1Z7-6N-TYx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbU-pk-8es" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901" y="1421"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="eQU-Qj-VVl">
             <objects>
@@ -287,13 +374,29 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="E2O-BZ-ZbW" kind="relationship" relationship="rootViewController" id="Nik-Z3-gyN"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ycf-E3-Cxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-228" y="576"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Xat-2W-Caj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kqp-X9-yGp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tnD-GQ-bfu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kKl-PA-P6E" kind="relationship" relationship="rootViewController" id="LNb-Wx-Ofr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BFd-6a-Keq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-235" y="1413"/>
         </scene>
     </scenes>
     <resources>
