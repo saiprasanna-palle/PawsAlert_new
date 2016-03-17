@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B14AF1E1C9A446000A85C61 /* DonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14AF1D1C9A446000A85C61 /* DonationViewController.swift */; };
+		5B14AF201C9A536000A85C61 /* YearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14AF1F1C9A536000A85C61 /* YearPicker.swift */; };
+		5B14AF221C9A67CC00A85C61 /* DonateItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14AF211C9A67CC00A85C61 /* DonateItemsViewController.swift */; };
+		5B14AF241C9A716500A85C61 /* VolunteerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14AF231C9A716500A85C61 /* VolunteerTableViewController.swift */; };
 		6713ACB31C7C0740004654F9 /* PetDetailControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6713ACB21C7C0740004654F9 /* PetDetailControllerViewController.swift */; };
 		6713ACB61C7C1F94004654F9 /* icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6713ACB41C7C1F94004654F9 /* icon.jpeg */; };
 		6713ACB71C7C1F94004654F9 /* icon2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6713ACB51C7C1F94004654F9 /* icon2.jpeg */; };
@@ -70,6 +74,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B14AF1D1C9A446000A85C61 /* DonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationViewController.swift; sourceTree = "<group>"; };
+		5B14AF1F1C9A536000A85C61 /* YearPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPicker.swift; sourceTree = "<group>"; };
+		5B14AF211C9A67CC00A85C61 /* DonateItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateItemsViewController.swift; sourceTree = "<group>"; };
+		5B14AF231C9A716500A85C61 /* VolunteerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolunteerTableViewController.swift; sourceTree = "<group>"; };
 		6713ACB21C7C0740004654F9 /* PetDetailControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetDetailControllerViewController.swift; sourceTree = "<group>"; };
 		6713ACB41C7C1F94004654F9 /* icon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon.jpeg; sourceTree = "<group>"; };
 		6713ACB51C7C1F94004654F9 /* icon2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon2.jpeg; sourceTree = "<group>"; };
@@ -228,6 +236,10 @@
 				BC38030A1C5DA5E100CC6A20 /* Assets.xcassets */,
 				BC38030C1C5DA5E100CC6A20 /* LaunchScreen.storyboard */,
 				BC38030F1C5DA5E200CC6A20 /* Info.plist */,
+				5B14AF1D1C9A446000A85C61 /* DonationViewController.swift */,
+				5B14AF1F1C9A536000A85C61 /* YearPicker.swift */,
+				5B14AF211C9A67CC00A85C61 /* DonateItemsViewController.swift */,
+				5B14AF231C9A716500A85C61 /* VolunteerTableViewController.swift */,
 			);
 			path = PawsAlert;
 			sourceTree = "<group>";
@@ -406,12 +418,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B14AF201C9A536000A85C61 /* YearPicker.swift in Sources */,
 				BC4615A21C600D79007DF074 /* ReportViewController.swift in Sources */,
 				BC3803061C5DA5E100CC6A20 /* ViewController.swift in Sources */,
+				5B14AF1E1C9A446000A85C61 /* DonationViewController.swift in Sources */,
 				BC38035E1C5DA8EE00CC6A20 /* MainTableViewController.swift in Sources */,
 				6713ACBB1C7C2300004654F9 /* MenuViewController.swift in Sources */,
 				6713ACB31C7C0740004654F9 /* PetDetailControllerViewController.swift in Sources */,
 				67337F8B1C7BEBA8000367F9 /* PetTableViewCell.swift in Sources */,
+				5B14AF221C9A67CC00A85C61 /* DonateItemsViewController.swift in Sources */,
+				5B14AF241C9A716500A85C61 /* VolunteerTableViewController.swift in Sources */,
 				BC3803041C5DA5E100CC6A20 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
