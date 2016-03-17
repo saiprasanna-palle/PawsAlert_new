@@ -78,11 +78,11 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
         )
         print(Pet)
         
-        let object = PFObject(className: "PawsAlertClass")
-        object.addObject(Pet.Name, forKey: "Name")
-        object.addObject(Pet.Type, forKey: "Type")
-        object.addObject(Pet.Status, forKey: "Status")
-        object.addObject(Pet.Details, forKey: "Details")
+        let object = PFObject(className: "PA")
+        object.setObject(Pet.Name, forKey: "Name")
+        object.setObject(Pet.Type, forKey: "Type")
+        object.setObject(Pet.Status, forKey: "Status")
+        object.setObject(Pet.Details, forKey: "Details")
 
         //  object.saveInBackground()
         
