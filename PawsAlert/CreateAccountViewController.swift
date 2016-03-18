@@ -39,7 +39,18 @@ class CreateAccountViewController: UIViewController {
             self.UsernameTextField.text = ""
             self.UsernameTextField.highlighted = true
             
-        } else if (password?.characters.count) < 8 {
+        }
+        
+        else if (username == "admin")
+        {
+            let alert = UIAlertView(title: "Invalid", message: "Username cannot be equal to admin", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+            UsernameTextField.text = ""
+            PasswordTextField.highlighted = true
+        }
+
+        
+        else if (password?.characters.count) < 8 {
             let alert = UIAlertView(title: "Invalid", message: "Password must be greater than 8 characters", delegate: self, cancelButtonTitle: "OK")
             alert.show()
             self.PasswordTextField.text = ""

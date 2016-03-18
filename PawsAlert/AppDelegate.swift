@@ -58,7 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              //   self.window!.rootViewController = tab
 
                 self.setupRootViewController(rootController as! UIViewController)
+            
         }
+        
         
             private func setupRootViewController(rootViewController: UIViewController) {
                 // Because self.window is an optional you should check it's value first and assign your rootViewController
