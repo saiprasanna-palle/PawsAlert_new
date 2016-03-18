@@ -86,7 +86,7 @@ class MainTableViewController: PFQueryTableViewController{
         var type_str : String?
         var status_str : String?
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("pfcell", forIndexPath: indexPath) as! PetTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("myPetCell", forIndexPath: indexPath) as! PetTableViewCell
         
         // Extract values from the PFObject to display in the table cell
         if let name = object?["Name"] as? String {
