@@ -84,10 +84,10 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
         let details_String : String = PetDetailsOutlet.text as String
         
         let object = PFObject(className: "PA")
-        object.addObject(name, forKey: "Name")
-        object.addObject(type, forKey: "Type")
-        object.addObject(status_String, forKey: "Status")
-        object.addObject(details_String, forKey: "Details")
+        object.setObject(name, forKey: "Name")
+        object.setObject(type, forKey: "Type")
+        object.setObject(status_String, forKey: "Status")
+        object.setObject(details_String, forKey: "Details")
 
         //  object.saveInBackground()
         

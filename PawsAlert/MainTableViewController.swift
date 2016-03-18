@@ -69,7 +69,7 @@ class MainTableViewController: PFQueryTableViewController{
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: "PA")
-        query.cachePolicy = .CacheElseNetwork
+        query.cachePolicy = .NetworkElseCache
         
         if (self.objects!.count == 0){
             query.cachePolicy = .CacheElseNetwork
