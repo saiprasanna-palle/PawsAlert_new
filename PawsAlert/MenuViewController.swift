@@ -27,6 +27,19 @@ class MenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+      
+        if(segue.identifier == "Donation")
+       {
+         let destVC = segue.destinationViewController as! DonationViewController
+        destVC.senderButton = "Donate Money"
+       }
+        if(segue.identifier == "Furless Fostering")
+        {
+             let destVC = segue.destinationViewController as! DonationViewController
+            destVC.senderButton = "Furless Fostering"
+        }
+    }
 
 
 }

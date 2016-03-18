@@ -71,7 +71,7 @@
                                     <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xEL-7E-bt4" kind="show" identifier="furlessFoster" id="f6j-FG-DyV"/>
+                                    <segue destination="lAC-F6-Pc8" kind="show" identifier="Furless Fostering" id="TJh-TY-MrC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -95,8 +95,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make a Donation!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jk-eW-o5e">
-                                <rect key="frame" x="115" y="77" width="145" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make a Donation!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jk-eW-o5e">
+                                <rect key="frame" x="20" y="77" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -218,12 +218,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Thank You for considering making a Donation to Stillwater Animal Welfare Coalition." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qRs-fc-qsu">
-                                <rect key="frame" x="20" y="112" width="335" height="52"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABB-wj-N1z">
                                 <rect key="frame" x="161" y="585" width="52" height="30"/>
                                 <state key="normal" title="Submit"/>
@@ -231,6 +225,12 @@
                                     <action selector="Submit:" destination="lAC-F6-Pc8" eventType="touchUpInside" id="lf9-W9-mcM"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Thank You for considering making a Donation to Stillwater Animal Welfare Coalition." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qRs-fc-qsu">
+                                <rect key="frame" x="20" y="106" width="335" height="69"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -247,6 +247,8 @@
                         <outlet property="MonthPicker" destination="9EH-qW-SdT" id="cDv-BB-AdL"/>
                         <outlet property="OtherAmount" destination="AR1-VK-gU5" id="72S-mJ-UFi"/>
                         <outlet property="SecCode" destination="3Pz-79-gcp" id="hhG-9B-AAg"/>
+                        <outlet property="Titlelabel" destination="6Jk-eW-o5e" id="RdF-h7-DTw"/>
+                        <outlet property="messsageLabel" destination="qRs-fc-qsu" id="aLN-Fn-5fh"/>
                         <outlet property="tenDollar" destination="BZj-2x-qc6" id="gZ8-L7-cgV"/>
                         <outlet property="twentyFiveDollar" destination="SZu-jB-Ewj" id="7Hg-Ad-g4U"/>
                     </connections>
@@ -273,14 +275,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Animal Welfare : 1710 S Main St, Stillwater, OK-74074." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RTI-bJ-g7l">
-                                <rect key="frame" x="20" y="233" width="335" height="51"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Paws Alert : 127 N Duck St, Stillwater, OK-74075." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5j5-DA-qjp">
-                                <rect key="frame" x="20" y="303" width="335" height="44"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Animal Welfare : 1710 S Main St, Stillwater, OK-74074." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RTI-bJ-g7l">
+                                <rect key="frame" x="20" y="238" width="335" height="51"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -292,40 +288,32 @@
                                     <action selector="OKtoDonate:" destination="2Bo-9z-2au" eventType="touchUpInside" id="7e8-RF-nqZ"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-w3-YJe">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-w3-YJe">
                                 <rect key="frame" x="20" y="118" width="335" height="79"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Thank You for Considering making a Donation. Kindly ship your donations to any of the following addresses.Donations can range include any of the pet related items(food, clothes, vaccines etc).</string>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Paws Alert : 127 N Duck St, Stillwater, OK-74075." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5j5-DA-qjp">
+                                <rect key="frame" x="20" y="303" width="335" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="address1" destination="RTI-bJ-g7l" id="Dmf-Fy-dub"/>
+                        <outlet property="address2" destination="5j5-DA-qjp" id="7Up-4H-j90"/>
+                        <outlet property="message" destination="zP1-w3-YJe" id="ccH-df-8jx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9p-EP-3S8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1803.5" y="-162.5"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="eQo-Zw-ila">
-            <objects>
-                <viewController id="xEL-7E-bt4" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rbF-Zh-Dt8"/>
-                        <viewControllerLayoutGuide type="bottom" id="xuA-j2-OHN"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pV7-74-GbF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dym-mC-W12" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1271.5" y="-773.5"/>
         </scene>
         <!--Volunteer-->
         <scene sceneID="mrS-Uh-ThT">
@@ -372,16 +360,16 @@
             </objects>
             <point key="canvasLocation" x="1706.5" y="575.5"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Success Stories Table View Controller-->
         <scene sceneID="aR5-hW-Pdg">
             <objects>
-                <tableViewController id="gKP-vm-h37" sceneMemberID="viewController">
+                <tableViewController id="gKP-vm-h37" customClass="SuccessStoriesTableViewController" customModule="PawsAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="305" sectionHeaderHeight="28" sectionFooterHeight="28" id="eaI-kV-vRZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuccessStory" rowHeight="305" id="zHB-co-uZd">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuccessStory" rowHeight="305" id="zHB-co-uZd" customClass="SuccessStoryTableViewCell" customModule="PawsAlert" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="305"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zHB-co-uZd" id="Pbd-wd-Y3m">
@@ -391,17 +379,22 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TE1-Tf-aQX">
                                             <rect key="frame" x="15" y="0.0" width="158" height="118"/>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="success story" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FfQ-Iz-oeg">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pMi-jR-1pW">
+                                            <rect key="frame" x="199" y="0.0" width="158" height="118"/>
+                                        </imageView>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="success story" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FfQ-Iz-oeg">
                                             <rect key="frame" x="15" y="139" width="342" height="128"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pMi-jR-1pW">
-                                            <rect key="frame" x="199" y="0.0" width="158" height="118"/>
-                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="petImage" destination="pMi-jR-1pW" id="FgI-3Z-AVb"/>
+                                    <outlet property="successStory" destination="FfQ-Iz-oeg" id="7N6-hO-g2I"/>
+                                    <outlet property="volunteerImage" destination="TE1-Tf-aQX" id="qT8-sD-nqc"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -886,4 +879,7 @@
         <image name="icon3.png" width="256" height="256"/>
         <image name="paw_icon" width="80" height="73"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="TJh-TY-MrC"/>
+    </inferredMetricsTieBreakers>
 </document>

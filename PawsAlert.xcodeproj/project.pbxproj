@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0A21081C9BB2A900825FF6 /* SuccessStoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A21071C9BB2A900825FF6 /* SuccessStoriesTableViewController.swift */; };
+		5B0A210A1C9BB2C300825FF6 /* SuccessStoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A21091C9BB2C300825FF6 /* SuccessStoryTableViewCell.swift */; };
 		5B14AF1E1C9A446000A85C61 /* DonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14AF1D1C9A446000A85C61 /* DonationViewController.swift */; };
 		5B14AF201C9A536000A85C61 /* YearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14AF1F1C9A536000A85C61 /* YearPicker.swift */; };
 		5B14AF221C9A67CC00A85C61 /* DonateItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14AF211C9A67CC00A85C61 /* DonateItemsViewController.swift */; };
@@ -78,6 +80,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B0A21071C9BB2A900825FF6 /* SuccessStoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessStoriesTableViewController.swift; sourceTree = "<group>"; };
+		5B0A21091C9BB2C300825FF6 /* SuccessStoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessStoryTableViewCell.swift; sourceTree = "<group>"; };
 		5B14AF1D1C9A446000A85C61 /* DonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationViewController.swift; sourceTree = "<group>"; };
 		5B14AF1F1C9A536000A85C61 /* YearPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPicker.swift; sourceTree = "<group>"; };
 		5B14AF211C9A67CC00A85C61 /* DonateItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateItemsViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 				5B14AF1D1C9A446000A85C61 /* DonationViewController.swift */,
 				5B14AF1F1C9A536000A85C61 /* YearPicker.swift */,
 				5B14AF211C9A67CC00A85C61 /* DonateItemsViewController.swift */,
+				5B0A21071C9BB2A900825FF6 /* SuccessStoriesTableViewController.swift */,
+				5B0A21091C9BB2C300825FF6 /* SuccessStoryTableViewCell.swift */,
 				5B14AF231C9A716500A85C61 /* VolunteerTableViewController.swift */,
 			);
 			path = PawsAlert;
@@ -441,7 +447,9 @@
 				67337F8B1C7BEBA8000367F9 /* PetTableViewCell.swift in Sources */,
 				5B14AF221C9A67CC00A85C61 /* DonateItemsViewController.swift in Sources */,
 				5B14AF241C9A716500A85C61 /* VolunteerTableViewController.swift in Sources */,
+				5B0A21081C9BB2A900825FF6 /* SuccessStoriesTableViewController.swift in Sources */,
 				67CC24271C9B42780042BA12 /* ForgotPasswordViewController.swift in Sources */,
+				5B0A210A1C9BB2C300825FF6 /* SuccessStoryTableViewCell.swift in Sources */,
 				BC3803041C5DA5E100CC6A20 /* AppDelegate.swift in Sources */,
 				67CC24231C9B425D0042BA12 /* LoginViewController.swift in Sources */,
 				67CC24211C9B423A0042BA12 /* HomeViewController.swift in Sources */,

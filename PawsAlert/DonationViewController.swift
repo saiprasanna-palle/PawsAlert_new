@@ -20,9 +20,11 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     var SCode: String = ""
     var rowMonthNum: Int = 0
     var rowYrNum: Int = 0
+    var senderButton : String = ""
     
+    @IBOutlet weak var Titlelabel: UILabel!
     
-    
+    @IBOutlet weak var messsageLabel: UITextView!
     
     @IBOutlet weak var tenDollar: UIButton!
     @IBOutlet weak var twentyFiveDollar: UIButton!
@@ -119,7 +121,23 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         // Do any additional setup after loading the view, typically from a nib.
        // self.navigationItem.leftBarButtonItem?.enabled = YES
         //write in save nethod
-       
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg4.jpg")!)
+        
+        messsageLabel.layer.borderWidth = 0
+        messsageLabel.layer.backgroundColor = UIColor(patternImage: UIImage(named: "bg4.jpg")!).CGColor
+
+        if (senderButton == "Donate Money")
+        {
+            Titlelabel.text = "Make a Donation!!"
+            messsageLabel.text = "Thank You for considering making a Donation to Stillwater Animal Welfare Coalition."
+        }
+        if (senderButton == "Furless Fostering")
+        {
+            Titlelabel.text = "Sponsor the furless animals!!"
+            messsageLabel.text = "Thank You for considering to sponsor animals at the Stillwater Animal Welfare. The sponsorship would help the furless animals to recover."
+            self.title = "Furless Fostering"
+            
+        }
         
     }
     
