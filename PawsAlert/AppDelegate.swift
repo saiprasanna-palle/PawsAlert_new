@@ -43,7 +43,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+}
+    extension AppDelegate {
+        
+        func setupNavigationWithRoot(root: String, andOptions options: [NSObject: AnyObject]?) {
+            // get your storyboard
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            // instantiate your desired ViewController
+            let rootController: AnyObject = storyboard.instantiateViewControllerWithIdentifier(root) as AnyObject
+            
+            //    let tab = storyboard.instantiateViewControllerWithIdentifier("main") as! MenuViewController
+             //   self.window!.rootViewController = tab
 
+                self.setupRootViewController(rootController as! UIViewController)
+        }
+        
+            private func setupRootViewController(rootViewController: UIViewController) {
+                // Because self.window is an optional you should check it's value first and assign your rootViewController
+                if self.window != nil {
+                    self.window!.rootViewController = rootViewController
+                }
+            }
 
 }
 

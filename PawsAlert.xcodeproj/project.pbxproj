@@ -25,6 +25,10 @@
 		67337F851C7BE73A000367F9 /* bg7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 67337F841C7BE73A000367F9 /* bg7.jpg */; };
 		67337F891C7BE777000367F9 /* PetCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67337F871C7BE777000367F9 /* PetCellTableViewCell.xib */; };
 		67337F8B1C7BEBA8000367F9 /* PetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67337F8A1C7BEBA8000367F9 /* PetTableViewCell.swift */; };
+		67CC24211C9B423A0042BA12 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CC24201C9B423A0042BA12 /* HomeViewController.swift */; };
+		67CC24231C9B425D0042BA12 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CC24221C9B425D0042BA12 /* LoginViewController.swift */; };
+		67CC24251C9B42690042BA12 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CC24241C9B42690042BA12 /* CreateAccountViewController.swift */; };
+		67CC24271C9B42780042BA12 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CC24261C9B42780042BA12 /* ForgotPasswordViewController.swift */; };
 		BC3803041C5DA5E100CC6A20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3803031C5DA5E100CC6A20 /* AppDelegate.swift */; };
 		BC3803061C5DA5E100CC6A20 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3803051C5DA5E100CC6A20 /* ViewController.swift */; };
 		BC3803091C5DA5E100CC6A20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC3803071C5DA5E100CC6A20 /* Main.storyboard */; };
@@ -92,6 +96,10 @@
 		67337F841C7BE73A000367F9 /* bg7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg7.jpg; sourceTree = "<group>"; };
 		67337F871C7BE777000367F9 /* PetCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PetCellTableViewCell.xib; sourceTree = "<group>"; };
 		67337F8A1C7BEBA8000367F9 /* PetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetTableViewCell.swift; sourceTree = "<group>"; };
+		67CC24201C9B423A0042BA12 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		67CC24221C9B425D0042BA12 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		67CC24241C9B42690042BA12 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		67CC24261C9B42780042BA12 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		BC3803001C5DA5E100CC6A20 /* PawsAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PawsAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3803031C5DA5E100CC6A20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC3803051C5DA5E100CC6A20 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +235,10 @@
 				BC3803031C5DA5E100CC6A20 /* AppDelegate.swift */,
 				BC3803051C5DA5E100CC6A20 /* ViewController.swift */,
 				BC3803071C5DA5E100CC6A20 /* Main.storyboard */,
+				67CC24201C9B423A0042BA12 /* HomeViewController.swift */,
+				67CC24221C9B425D0042BA12 /* LoginViewController.swift */,
+				67CC24241C9B42690042BA12 /* CreateAccountViewController.swift */,
+				67CC24261C9B42780042BA12 /* ForgotPasswordViewController.swift */,
 				6713ACBA1C7C2300004654F9 /* MenuViewController.swift */,
 				6713ACB21C7C0740004654F9 /* PetDetailControllerViewController.swift */,
 				67337F8A1C7BEBA8000367F9 /* PetTableViewCell.swift */,
@@ -418,6 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67CC24251C9B42690042BA12 /* CreateAccountViewController.swift in Sources */,
 				5B14AF201C9A536000A85C61 /* YearPicker.swift in Sources */,
 				BC4615A21C600D79007DF074 /* ReportViewController.swift in Sources */,
 				BC3803061C5DA5E100CC6A20 /* ViewController.swift in Sources */,
@@ -428,7 +441,10 @@
 				67337F8B1C7BEBA8000367F9 /* PetTableViewCell.swift in Sources */,
 				5B14AF221C9A67CC00A85C61 /* DonateItemsViewController.swift in Sources */,
 				5B14AF241C9A716500A85C61 /* VolunteerTableViewController.swift in Sources */,
+				67CC24271C9B42780042BA12 /* ForgotPasswordViewController.swift in Sources */,
 				BC3803041C5DA5E100CC6A20 /* AppDelegate.swift in Sources */,
+				67CC24231C9B425D0042BA12 /* LoginViewController.swift in Sources */,
+				67CC24211C9B423A0042BA12 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,6 +30,7 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
     let foundPaw : UIImage = UIImage(named: "FOUND_PAW")!
     let lostPawSelected : UIImage = UIImage(named: "LOST_PAW_SELECTED")!
     let lostPaw : UIImage = UIImage(named: "LOST_PAW")!
+    var str : String = "FOUND"
 
     
     
@@ -60,7 +61,6 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
     var PetImage : UIImage = UIImage(named: "No_Image_Paw")!
     @IBAction func SubmitAction(sender: UIButton) {
         
-        var str = "FOUND"
         if lostSelected {
             str = "LOST"
         }
@@ -78,11 +78,16 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
         )
         print(Pet)
         
-        let object = PFObject(className: "PawsAlertClass")
-        object.addObject(Pet.Name, forKey: "Name")
-        object.addObject(Pet.Type, forKey: "Type")
-        object.addObject(Pet.Status, forKey: "Status")
-        object.addObject(Pet.Details, forKey: "Details")
+        let name : String = PetNameOutLet.text! as String
+        let type : String = pickerViewSelected as String
+        let status_String : String = str as String
+        let details_String : String = PetDetailsOutlet.text as String
+        
+        let object = PFObject(className: "PA")
+        object.addObject(name, forKey: "Name")
+        object.addObject(type, forKey: "Type")
+        object.addObject(status_String, forKey: "Status")
+        object.addObject(details_String, forKey: "Details")
 
         //  object.saveInBackground()
         
@@ -95,6 +100,8 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
         //    let userPhoto = PFObject(className: "TestClass")
         object["imageFile"] = imageFile
         object.saveInBackground()
+        
+        self.navigationController?.popViewControllerAnimated(true)
         
     }
     

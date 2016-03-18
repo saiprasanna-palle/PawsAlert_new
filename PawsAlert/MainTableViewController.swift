@@ -10,6 +10,8 @@ import UIKit
 import Parse
 
 class MainTableViewController: UITableViewController {
+    
+      let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     var data = [[String]]()
     var images = [UIImage]()
@@ -21,6 +23,13 @@ class MainTableViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        
+        
+        // Verify Login
+        if (PFUser.currentUser() == nil) {
+            self.appDelegate.setupNavigationWithRoot("homeNavigation", andOptions: nil)
+        }
+        
         
         self.title = "Paws Alert"
         self.tableView.separatorColor = UIColor(red: 0.5, green: 0.9, blue: 0.1, alpha: 1)
