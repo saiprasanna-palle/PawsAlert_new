@@ -14,9 +14,9 @@ class PetDetailControllerViewController: UIViewController {
     @IBOutlet weak var PetName: UILabel!
     @IBOutlet weak var PetImg: UIImageView!
     
-     var name : String = ""
-    var img : UIImage = UIImage()
-    var details : String = ""
+    var detail_String: String!
+    var imageFile: PFFile!
+    var name : String!
     
     
     override func viewDidLoad() {
@@ -34,11 +34,22 @@ class PetDetailControllerViewController: UIViewController {
         UIGraphicsEndImageContext()
         self.view.backgroundColor = UIColor(patternImage: image)
         
-        PetName.text = name
-        PetImg.image = img
-        PetDetails.text = details
-        // Do any additional setup after loading the view.
+        self.PetDetails.text = self.detail_String
+        self.PetName.text = self.name
+        
+        
+        self.imageFile.getDataInBackgroundWithBlock({ (imageData, error) -> Void in
+            if error == nil
+            {
+                if let imageData = imageData
+                {
+                    let image = UIImage(data:imageData)
+                    self.PetImg.image = image
+                }
+            }
+        })
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -8,8 +8,9 @@
 
 import UIKit
 import Parse
+import ParseUI
 
-class MainTableViewController: UITableViewController {
+class MainTableViewController: PFQueryTableViewController{
     
       let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
@@ -18,6 +19,11 @@ class MainTableViewController: UITableViewController {
     var col : Int = 0
     var total : Int = 0
     var flag : Int = 0
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,185 +44,92 @@ class MainTableViewController: UITableViewController {
         let blurView = UIVisualEffectView(effect: blur)
         view.insertSubview(blurView, atIndex: 0)
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
-        
-        initData()
-        
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        print("In view reload")
-        tableView.reloadData()
+    // Initialise the PFQueryTable tableview
+    override init(style: UITableViewStyle, className: String!) {
+        super.init(style: style, className: className)
     }
     
-     func initData()
-    {
-        let query = PFQuery(className:"PA")
-        var i : Int = 0
-        print("In init main data")
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
         
-         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-            if error == nil {
-                print("obj count : \(objects?.count)")
-                var temp = [UIImage](count: (objects?.count)!, repeatedValue: UIImage(named: "bg4.jpg")!)
-                
-                for x in objects! {
-                    self.data.append([])
-                    self.data[i].append(x.valueForKey("Name") as! String!)
-                    self.data[i].append(x.valueForKey("Status") as! String!)
-                    self.data[i].append(x.valueForKey("Type") as! String!)
-                    self.data[i].append(x.valueForKey("Details") as! String!)
-                    self.data[i].append(x.valueForKey("objectId") as! String!)
-
-                    let userImageFile : PFFile = x["imageFile"] as! PFFile
-                    userImageFile.getDataInBackgroundWithBlock({(imageData: NSData?, error NSError) -> Void in
-                        if (error == nil) {
-                            let imaged = UIImage(data:imageData!)
-                        //    self.images.append(imaged!)
-                            
-                            for j in 0..<self.data.count
-                            {
-                            if(self.data[j][4] == x.valueForKey("objectId") as! String!)
-                            {
-                                self.total++
-                            temp.removeAtIndex(j)
-                            temp.insert(imaged!, atIndex: j)
-                            print("Image retrieved")
-                            }
-                            }
-                            
-                            if self.total == objects?.count
-                            {
-                                self.flag = 1
-                                
-                                for k in 0..<self.data.count
-                                {
-                                    self.images.append(temp[k])
-                                }
-                                
-                                self.tableView.reloadData()
-                            }
-                        }
-                        else
-                        {
-                            print("Cannot retrieve image")
-                        }
-                    })
-                    i++
-                }
-            } else {
-                print(error)
-            }
-        }
+        // Configure the PFQueryTableView
+        self.parseClassName = "PA"
+        self.textKey = "Name"
+        self.pullToRefreshEnabled = true
+        self.paginationEnabled = true
+        self.objectsPerPage = 4
     }
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+    // Define the query that will provide the data for the table view
+    override func queryForTable() -> PFQuery {
+        var query = PFQuery(className: "PA")
+        query.cachePolicy = .CacheElseNetwork
+        
+        if (self.objects!.count == 0){
+            query.cachePolicy = .CacheElseNetwork
+        }
+        
+        query.orderByAscending("Name")
+        return query
+        
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+    //override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
+        var type_str : String?
+        var status_str : String?
         
-        if segue.identifier == "detail" {
-            let cell = sender as! UITableViewCell
-            let x = self.tableView.indexPathForCell(cell)
-            let col : Int = (x?.row)! as Int
-            print(" X : \(x?.row), col : \(col)")
-            let dc = (segue.destinationViewController as! PetDetailControllerViewController)
-            dc.name = data[col][0]
-            dc.img = images[col]
-            dc.details = "Name : \(data[col][0])"+"\r\n"+"\(data[col][1]) \(data[col][2]) \r\n"+data[col][3]
-        }
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return data.count
-    }
-
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("myPetCell", forIndexPath: indexPath) as! PetTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("pfcell", forIndexPath: indexPath) as! PetTableViewCell
         
-        print("In cell")
-        // Configure the cell...
-        cell.PetName.text = data[indexPath.row][0]
-        cell.PetDetail.text = data[indexPath.row][1]+" "+data[indexPath.row][2]
-
-               
-        if flag == 1
-        {
-            print("in flag")
-         //   cell.PetImage.image = images[indexPath.row]
-            
-            let cellImage = images[indexPath.row]
-            let logoSize = CGSizeMake(200, 105)
-            UIGraphicsBeginImageContext(logoSize)
-            let imgRect = CGRectMake(0, 5, logoSize.width-60, logoSize.height-5)
-            cellImage.drawInRect(imgRect)
-            cell.PetImage.image = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsGetCurrentContext()
-
+        // Extract values from the PFObject to display in the table cell
+        if let name = object?["Name"] as? String {
+            //   cell.textLabel?.text = name
+            cell.PetName?.text = name
         }
+        if let status = object?["Status"] as? String {
+            status_str = status
+        }
+        
+        if let type = object?["Type"] as? String {
+            type_str =  type
+        }
+        cell.PetDetail?.text = status_str! + "  " + type_str!
+        
+        let imageFile = object?.objectForKey("imageFile") as? PFFile
+        cell.PetImage?.image = UIImage(named: "paw_icon")
+        cell.PetImage?.file = imageFile
+        cell.PetImage?.loadInBackground()
+        //   cell.imageView?.file = imageFile
+        //  cell.imageView?.loadInBackground()
         
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 80
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == "petDetail"
+        {
+            let indexPath = self.tableView.indexPathForSelectedRow
+            let detailVC = segue.destinationViewController as! PetDetailControllerViewController
+            let object = self.objectAtIndexPath(indexPath)
+            detailVC.detail_String = object?.objectForKey("Details") as! String
+            detailVC.imageFile = object?.objectForKey("imageFile") as! PFFile
+            detailVC.name = object?.objectForKey("Name") as! String
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

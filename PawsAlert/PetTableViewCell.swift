@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import ParseUI
 
-class PetTableViewCell: UITableViewCell {
+class PetTableViewCell: PFTableViewCell {
 
     @IBOutlet weak var PetDetail: UILabel!
     @IBOutlet weak var PetName: UILabel!
-    @IBOutlet weak var PetImage: UIImageView!
+    @IBOutlet weak var PetImage: PFImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
