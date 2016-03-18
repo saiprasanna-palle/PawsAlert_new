@@ -27,6 +27,9 @@
 		67337F851C7BE73A000367F9 /* bg7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 67337F841C7BE73A000367F9 /* bg7.jpg */; };
 		67337F891C7BE777000367F9 /* PetCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67337F871C7BE777000367F9 /* PetCellTableViewCell.xib */; };
 		67337F8B1C7BEBA8000367F9 /* PetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67337F8A1C7BEBA8000367F9 /* PetTableViewCell.swift */; };
+		67A7EB301C9C871C007810BB /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A7EB2F1C9C871C007810BB /* TempViewController.swift */; };
+		67A7EB321C9CABAC007810BB /* UserPetsCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A7EB311C9CABAC007810BB /* UserPetsCellTableViewCell.swift */; };
+		67A7EB341C9CACA2007810BB /* CloseCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A7EB331C9CACA2007810BB /* CloseCaseViewController.swift */; };
 		67CC24211C9B423A0042BA12 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CC24201C9B423A0042BA12 /* HomeViewController.swift */; };
 		67CC24231C9B425D0042BA12 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CC24221C9B425D0042BA12 /* LoginViewController.swift */; };
 		67CC24251C9B42690042BA12 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CC24241C9B42690042BA12 /* CreateAccountViewController.swift */; };
@@ -100,6 +103,9 @@
 		67337F841C7BE73A000367F9 /* bg7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg7.jpg; sourceTree = "<group>"; };
 		67337F871C7BE777000367F9 /* PetCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PetCellTableViewCell.xib; sourceTree = "<group>"; };
 		67337F8A1C7BEBA8000367F9 /* PetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetTableViewCell.swift; sourceTree = "<group>"; };
+		67A7EB2F1C9C871C007810BB /* TempViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
+		67A7EB311C9CABAC007810BB /* UserPetsCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPetsCellTableViewCell.swift; sourceTree = "<group>"; };
+		67A7EB331C9CACA2007810BB /* CloseCaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseCaseViewController.swift; sourceTree = "<group>"; };
 		67CC24201C9B423A0042BA12 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		67CC24221C9B425D0042BA12 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		67CC24241C9B42690042BA12 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +245,9 @@
 				BC3803031C5DA5E100CC6A20 /* AppDelegate.swift */,
 				BC3803051C5DA5E100CC6A20 /* ViewController.swift */,
 				BC3803071C5DA5E100CC6A20 /* Main.storyboard */,
+				67A7EB331C9CACA2007810BB /* CloseCaseViewController.swift */,
+				67A7EB311C9CABAC007810BB /* UserPetsCellTableViewCell.swift */,
+				67A7EB2F1C9C871C007810BB /* TempViewController.swift */,
 				67CC24201C9B423A0042BA12 /* HomeViewController.swift */,
 				67CC24221C9B425D0042BA12 /* LoginViewController.swift */,
 				67CC24241C9B42690042BA12 /* CreateAccountViewController.swift */,
@@ -437,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67CC24251C9B42690042BA12 /* CreateAccountViewController.swift in Sources */,
+				67A7EB321C9CABAC007810BB /* UserPetsCellTableViewCell.swift in Sources */,
 				5B14AF201C9A536000A85C61 /* YearPicker.swift in Sources */,
 				BC4615A21C600D79007DF074 /* ReportViewController.swift in Sources */,
 				BC3803061C5DA5E100CC6A20 /* ViewController.swift in Sources */,
@@ -450,7 +460,9 @@
 				5B0A21081C9BB2A900825FF6 /* SuccessStoriesTableViewController.swift in Sources */,
 				67CC24271C9B42780042BA12 /* ForgotPasswordViewController.swift in Sources */,
 				5B0A210A1C9BB2C300825FF6 /* SuccessStoryTableViewCell.swift in Sources */,
+				67A7EB301C9C871C007810BB /* TempViewController.swift in Sources */,
 				BC3803041C5DA5E100CC6A20 /* AppDelegate.swift in Sources */,
+				67A7EB341C9CACA2007810BB /* CloseCaseViewController.swift in Sources */,
 				67CC24231C9B425D0042BA12 /* LoginViewController.swift in Sources */,
 				67CC24211C9B423A0042BA12 /* HomeViewController.swift in Sources */,
 			);

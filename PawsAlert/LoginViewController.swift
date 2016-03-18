@@ -81,6 +81,9 @@ class LoginViewController: UIViewController {
     } else {
     let alert = UIAlertView(title: "Error", message: "Cannot login. Please try again later!", delegate: self, cancelButtonTitle: "OK")
     alert.show()
+    self.Username.text = ""
+    self.Password.text = ""
+        
     }
     })
     }

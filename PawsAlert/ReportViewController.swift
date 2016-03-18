@@ -21,7 +21,7 @@ extension UIImage
 
 class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePickerControllerDelegate,UIPickerViewDelegate,UITextFieldDelegate, UINavigationControllerDelegate,UITextViewDelegate {
     
-    var pickerViewData = ["Puppy","Kitten","Rabbit", "Dog", "Duck","Parrot"]
+    var pickerViewData = ["Puppy","Kitten","Rabbit", "Dog", "Duck","Parrot","Piglet"]
     var pickerViewSelected : String = ""
     var cameraImage : Bool?
     
@@ -88,6 +88,7 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
         object.setObject(type, forKey: "Type")
         object.setObject(status_String, forKey: "Status")
         object.setObject(details_String, forKey: "Details")
+        object["fromUser"] = PFUser.currentUser()
 
         //  object.saveInBackground()
         

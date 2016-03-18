@@ -38,9 +38,6 @@
                                     <segue destination="6pf-pV-THJ" kind="show" identifier="showOpp" id="a3R-na-IqU"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CatsAndDog" translatesAutoresizingMaskIntoConstraints="NO" id="HmX-Ib-GMT">
-                                <rect key="frame" x="20" y="291" width="335" height="261"/>
-                            </imageView>
                             <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zss-wz-aew">
                                 <rect key="frame" x="151" y="72" width="112" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -74,6 +71,20 @@
                                     <segue destination="lAC-F6-Pc8" kind="show" identifier="Furless Fostering" id="TJh-TY-MrC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNa-RE-ngR">
+                                <rect key="frame" x="140" y="272" width="151" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Close Case">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="1" green="0.20883155240000001" blue="0.32007878470000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hXq-U4-eoB" kind="show" identifier="closeCase" id="zkP-XF-wF9"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CatsAndDog" translatesAutoresizingMaskIntoConstraints="NO" id="HmX-Ib-GMT">
+                                <rect key="frame" x="20" y="330" width="335" height="261"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -82,6 +93,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RcA-PW-Bie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="700.5" y="-773.5"/>
+        </scene>
+        <!--Close Case View Controller-->
+        <scene sceneID="HTM-Hh-ewU">
+            <objects>
+                <tableViewController id="hXq-U4-eoB" customClass="CloseCaseViewController" customModule="PawsAlert" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="R8A-KZ-jBo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userPetCell" rowHeight="80" id="dzE-gR-EPe" customClass="UserPetsCellTableViewCell" customModule="PawsAlert" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dzE-gR-EPe" id="dsq-vu-ZQg">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6p-ju-b2K" customClass="PFImageView">
+                                            <rect key="frame" x="39" y="6" width="89" height="66"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ya1-Vb-Rbx">
+                                            <rect key="frame" x="160" y="29" width="155" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="petImage" destination="I6p-ju-b2K" id="3kW-FK-LQi"/>
+                                    <outlet property="petName" destination="ya1-Vb-Rbx" id="4cx-OA-asL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hXq-U4-eoB" id="cJl-NX-N3a"/>
+                            <outlet property="delegate" destination="hXq-U4-eoB" id="vVZ-uT-fZG"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZwJ-Ms-0LK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1439.5" y="-897.5"/>
         </scene>
         <!--Donation-->
         <scene sceneID="BCW-n1-27Q">
@@ -278,7 +333,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Animal Welfare : 1710 S Main St, Stillwater, OK-74074." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RTI-bJ-g7l">
                                 <rect key="frame" x="20" y="238" width="335" height="51"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Thank You for Considering making a Donation. Kindly ship your donations to any of the following addresses.Donations can range include any of the pet related items(food, clothes, vaccines etc).</string>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -319,17 +373,17 @@
         <!--Volunteer-->
         <scene sceneID="mrS-Uh-ThT">
             <objects>
-                <tableViewController title="Volunteer" id="6pf-pV-THJ" sceneMemberID="viewController">
+                <tableViewController title="Volunteer" id="6pf-pV-THJ" customClass="VolunteerTableViewController" customModule="PawsAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KRq-4N-ooV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="opportunity" textLabel="JNd-3r-uwq" detailTextLabel="YjD-Ja-pOV" style="IBUITableViewCellStyleSubtitle" id="O2v-cP-rV4">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="volunteer" textLabel="JNd-3r-uwq" detailTextLabel="YjD-Ja-pOV" rowHeight="45" style="IBUITableViewCellStyleSubtitle" id="O2v-cP-rV4" customClass="PFTableViewCell">
+                                <rect key="frame" x="0.0" y="92" width="375" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O2v-cP-rV4" id="9K6-Mb-Kpy">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JNd-3r-uwq">
@@ -377,18 +431,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="304"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TE1-Tf-aQX">
-                                            <rect key="frame" x="15" y="0.0" width="158" height="118"/>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pMi-jR-1pW">
-                                            <rect key="frame" x="199" y="0.0" width="158" height="118"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TE1-Tf-aQX" customClass="PFImageView">
+                                            <rect key="frame" x="15" y="8" width="158" height="118"/>
                                         </imageView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="success story" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FfQ-Iz-oeg">
-                                            <rect key="frame" x="15" y="139" width="342" height="128"/>
+                                            <rect key="frame" x="15" y="139" width="342" height="157"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pMi-jR-1pW" customClass="PFImageView">
+                                            <rect key="frame" x="199" y="8" width="158" height="118"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -422,7 +476,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gbt-hD-iGx">
-                                <rect key="frame" x="20" y="72" width="335" height="278"/>
+                                <rect key="frame" x="20" y="81" width="335" height="269"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Details:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47G-f1-6zY">
                                 <rect key="frame" x="30" y="430" width="103" height="26"/>
@@ -438,7 +492,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lost Cat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STg-gZ-zrm">
-                                <rect key="frame" x="151" y="399" width="240" height="22"/>
+                                <rect key="frame" x="67" y="400" width="240" height="22"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -731,34 +785,24 @@
             </objects>
             <point key="canvasLocation" x="1665.5" y="3011.5"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="iun-N9-QzW">
+        <!--Temp View Controller-->
+        <scene sceneID="hnt-5q-TJn">
             <objects>
-                <tableViewController id="nYf-zL-Xnz" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bpr-Wi-s5d">
+                <viewController id="Ydx-cu-lX9" customClass="TempViewController" customModule="PawsAlert" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zKK-Md-Q2m"/>
+                        <viewControllerLayoutGuide type="bottom" id="SK4-7N-U4L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hpw-Wd-y0I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qKd-Va-ind">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qKd-Va-ind" id="mhx-xm-oBU">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="nYf-zL-Xnz" id="iuU-R8-lgN"/>
-                            <outlet property="delegate" destination="nYf-zL-Xnz" id="Ccp-Zf-3xv"/>
-                        </connections>
-                    </tableView>
+                    </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tT1-Ec-eXr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c6x-A2-pLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="832.5" y="3873.5"/>
+            <point key="canvasLocation" x="765" y="3773"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="Nda-k3-7LN">
@@ -939,24 +983,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myPetCell" rowHeight="84" id="t18-1h-9MH" customClass="PetTableViewCell" customModule="PawsAlert" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="375" height="84"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myPetCell" rowHeight="80" id="t18-1h-9MH" customClass="PetTableViewCell" customModule="PawsAlert" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t18-1h-9MH" id="ZkZ-Sw-Xyx">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b4d-Ao-Jpv" customClass="PFImageView">
-                                            <rect key="frame" x="19" y="-1" width="110" height="75"/>
+                                            <rect key="frame" x="31" y="5" width="94" height="69"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwB-z7-OET">
-                                            <rect key="frame" x="143" y="8" width="183" height="25"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN7-qR-jxZ">
+                                            <rect key="frame" x="143" y="41" width="183" height="25"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN7-qR-jxZ">
-                                            <rect key="frame" x="143" y="41" width="183" height="25"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwB-z7-OET">
+                                            <rect key="frame" x="143" y="13" width="183" height="25"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>

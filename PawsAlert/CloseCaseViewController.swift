@@ -1,40 +1,36 @@
 //
-//  SuccessStoriesTableViewController.swift
+//  CloseCaseViewController.swift
 //  PawsAlert
 //
-//  Created by KASUVAJJALA DEEPTHI  on 3/17/16.
+//  Created by PALLE SAIPRASANNA  on 3/18/16.
 //  Copyright © 2016 Rohit Nutalapati. All rights reserved.
 //
 
 import UIKit
+import Parse
 import ParseUI
 
-class SuccessStoriesTableViewController: PFQueryTableViewController {
-  
-   
-    override func viewWillAppear(animated: Bool) {
-        tableView.reloadData()
-    }
-    
+class CloseCaseViewController: PFQueryTableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        self.title = "Success Stories"
+        self.title = "Close Success Case"
         self.tableView.separatorColor = UIColor(red: 0.5, green: 0.9, blue: 0.1, alpha: 1)
         tableView.backgroundView = UIImageView(image: UIImage(named: "bg4.jpg"))
         let blur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
         let blurView = UIVisualEffectView(effect: blur)
         view.insertSubview(blurView, atIndex: 0)
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        //
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     
     
     // Initialise the PFQueryTable tableview
@@ -46,46 +42,48 @@ class SuccessStoriesTableViewController: PFQueryTableViewController {
         super.init(coder: aDecoder)!
         
         // Configure the PFQueryTableView
-        self.parseClassName = "Stories"
-        self.textKey = "StoryDetail"
+        self.parseClassName = "PA"
+        self.textKey = "Name"
         self.pullToRefreshEnabled = true
         self.paginationEnabled = true
-        self.objectsPerPage = 1
+        self.objectsPerPage = 4
     }
     
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery {
-        let query = PFQuery(className: "Stories")
+        let query = PFQuery(className: "PA")
+         query.whereKey("fromUser", equalTo:PFUser.currentUser()!)
         query.cachePolicy = .CacheElseNetwork
         
         if (self.objects!.count == 0){
             query.cachePolicy = .NetworkElseCache
         }
+        
+        query.orderByAscending("Name")
         return query
         
     }
 
+    
 
     //override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("SuccessStory", forIndexPath: indexPath) as! SuccessStoryTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("userPetCell", forIndexPath: indexPath) as! UserPetsCellTableViewCell
         
         // Extract values from the PFObject to display in the table cell
-        if let story = object?["StoryDetail"] as? String {
+        if let name = object?["Name"] as? String {
             //   cell.textLabel?.text = name
-            cell.successStory.text = story
+            cell.petName?.text = name
         }
+     
         
-        let petImageFile = object?.objectForKey("PetImage") as? PFFile
+        let imageFile = object?.objectForKey("imageFile") as? PFFile
         cell.petImage?.image = UIImage(named: "paw_icon")
-        cell.petImage?.file = petImageFile
+        cell.petImage?.file = imageFile
         cell.petImage?.loadInBackground()
-        
-        let volunteerImageFile = object?.objectForKey("StoryImage") as? PFFile
-        cell.volunteerImage?.image = UIImage(named: "paw_icon")
-        cell.volunteerImage?.file = volunteerImageFile
-        cell.volunteerImage?.loadInBackground()
+        //   cell.imageView?.file = imageFile
+        //  cell.imageView?.loadInBackground()
         
         return cell
     }
@@ -93,7 +91,31 @@ class SuccessStoriesTableViewController: PFQueryTableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 300
-}
+        return 80
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        
+        return true
+        
+    }
+    
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // you need to implement this method too or you can't swipe to display the actions
+        
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            var object = self.objectAtIndexPath(indexPath)
+            //self.objects.removeAtIndex(indexpath)
+            object!.deleteInBackgroundWithBlock({ (Bool, NSError) -> Void in
+                self.loadObjects()
+                print("its alive...sort of")
+            })
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.reloadData()
+        }
+    }
 
+    
+    
 }

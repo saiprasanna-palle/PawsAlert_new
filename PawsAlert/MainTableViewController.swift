@@ -26,6 +26,7 @@ class MainTableViewController: PFQueryTableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -72,7 +73,7 @@ class MainTableViewController: PFQueryTableViewController{
         query.cachePolicy = .CacheElseNetwork
         
         if (self.objects!.count == 0){
-            query.cachePolicy = .CacheElseNetwork
+            query.cachePolicy = .NetworkElseCache
         }
         
         query.orderByAscending("Name")

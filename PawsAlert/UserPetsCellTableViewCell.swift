@@ -1,23 +1,18 @@
 //
-//  SuccessStoryTableViewCell.swift
+//  UserPetsCellTableViewCell.swift
 //  PawsAlert
 //
-//  Created by KASUVAJJALA DEEPTHI  on 3/17/16.
+//  Created by PALLE SAIPRASANNA  on 3/18/16.
 //  Copyright © 2016 Rohit Nutalapati. All rights reserved.
 //
 
 import UIKit
 import ParseUI
 
-class SuccessStoryTableViewCell: PFTableViewCell {
+class UserPetsCellTableViewCell: PFTableViewCell {
 
-    
-    @IBOutlet weak var volunteerImage: PFImageView!
-    
+    @IBOutlet weak var petName: UILabel!
     @IBOutlet weak var petImage: PFImageView!
-    
-    @IBOutlet weak var successStory: UITextView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

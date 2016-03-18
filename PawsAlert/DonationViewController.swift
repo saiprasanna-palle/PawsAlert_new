@@ -9,8 +9,8 @@
 import UIKit
 
 class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
-    var MonthNames = ["Month","January", "February", "March", "April", "May"]
-    var Years = ["Year","2016", "2017", "2018", "2019", "2020"]
+    var MonthNames = ["January", "February", "March", "April", "May","June","July","August","September","October","November","December"]
+    var Years = ["2016", "2017", "2018", "2019", "2020","2021","2022","2023","2024","2025"]
     var Fname : String = ""
     var Lname : String = ""
     var cardNumber : String = ""
@@ -53,26 +53,22 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
 
     @IBAction func tenDollar(sender: AnyObject) {
          AmountField.enabled = false
-        AmountField.text = tenDollar.titleLabel?.text
-        Amount = "10"
+        AmountField.text = "10"
     }
     
     @IBAction func twentyFive(sender: AnyObject) {
          AmountField.enabled = false
-         AmountField.text = twentyFiveDollar.titleLabel?.text
-        Amount = "25"
+         AmountField.text = "25"
     }
     
     @IBAction func fifty(sender: AnyObject) {
          AmountField.enabled = false
-         AmountField.text = FiftyDollar.titleLabel?.text
-        Amount = "50"
+         AmountField.text = "50"
     }
     
     @IBAction func Hundred(sender: AnyObject) {
         AmountField.enabled = false
-         AmountField.text = HundredDollar.titleLabel?.text
-        Amount = "100"
+         AmountField.text = "100"
     }
     
     @IBAction func OtherAmount(sender: AnyObject) {
@@ -93,27 +89,141 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         Lname = LastName.text!
         cardNumber = CardNum.text!
         SCode = SecCode.text!
+        Amount = AmountField.text!
         
-        let alert = UIAlertController(
-            title: "Message",
-            message: "You have successfully made your Donation.",
-            preferredStyle: UIAlertControllerStyle.Alert
-        )
+        if (Fname != "" && Lname != "" && cardNumber != "" && SCode != "" && Amount != "")
+        {
+            print("No null fields")
+        do
+        {
+            
+           let cardnum = try Int32(cardNumber)
+            let secCode = try Int(SCode)
+            let amt = try Int(Amount)
+            print(AmountField.text!)
+            print(amt)
+            
+            if (cardNumber.characters.count != 16)
+            {
+                let alert = UIAlertController(
+                    title: "Error",
+                    message: "Card number should be only 16 digits",
+                    preferredStyle: UIAlertControllerStyle.Alert
+                )
+                alert.addAction(UIAlertAction(
+                    title: "OK",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil
+                    ))
+                self.presentViewController(alert, animated: true, completion: nil)
+
+
+            }
+            
+           else if (SCode.characters.count != 3)
+            {
+                let alert = UIAlertController(
+                    title: "Error",
+                    message: "Security code can only be 3 digits",
+                    preferredStyle: UIAlertControllerStyle.Alert
+                )
+                
+                alert.addAction(UIAlertAction(
+                    title: "OK",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil
+                    ))
+                self.presentViewController(alert, animated: true, completion: nil)
+
+            }
+                
+            
+            else
+            {
+                print("All fields validated")
+                let object = PFObject(className: "Donation")
+                object.setObject(amt!, forKey: "Amount")
+                object["fromUser"] = PFUser.currentUser()
+                object.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if error != nil {
+                        let alert = UIAlertController(
+                            title: "Message",
+                            message: "Donation cannot me made. Try again later",
+                            preferredStyle: UIAlertControllerStyle.Alert)
+                            
+                            alert.addAction(UIAlertAction(
+                                title: "OK",
+                                style: UIAlertActionStyle.Default,
+                                handler: nil
+                                ))
+                            self.presentViewController(alert, animated: true, completion: nil)
+                            self.navigationController?.popViewControllerAnimated(true)
+                        
+                    } else {
+                        
+                        let alert = UIAlertController(
+                            title: "Message",
+                            message: "You have successfully made your Donation.",
+                            preferredStyle: UIAlertControllerStyle.Alert
+                        )
+                        
+                        alert.addAction(UIAlertAction(
+                            title: "OK",
+                            style: UIAlertActionStyle.Default,
+                            handler: nil
+                            ))
+                      self.presentViewController(alert, animated: true, completion: nil)
+                        self.AmountField.text = ""
+                        self.FirstName.text = ""
+                        self.LastName.text = ""
+                        self.CardNum.text = ""
+                        self.MonthPicker.selectRow(0, inComponent: 0, animated: true)
+                        self.DatePicker.selectRow(0, inComponent: 0, animated: true)
+                        self.SecCode.text = ""
+                      //self.navigationController?.popViewControllerAnimated(true)
+
+                    }
+                }
+                        }
+            
+        }
+            catch
+            {
+                print("In catch")
+                let alert = UIAlertController(
+                    title: "Error",
+                    message: "Card number/Security/Amount should be numeric",
+                    preferredStyle: UIAlertControllerStyle.Alert
+                )
+                alert.addAction(UIAlertAction(
+                    title: "OK",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil
+                    ))
+                self.presentViewController(alert, animated: true, completion: nil)
+
+            }
+            
+        }
         
-        alert.addAction(UIAlertAction(
-            title: "OK",
-            style: UIAlertActionStyle.Default,
-            handler: nil
-            ))
-       self.presentViewController(alert, animated: true, completion: nil)
-        AmountField.text = ""
-        FirstName.text = ""
-        LastName.text = ""
-        CardNum.text = ""
-        MonthPicker.selectRow(0, inComponent: 0, animated: true)
-        DatePicker.selectRow(0, inComponent: 0, animated: true)
-        SecCode.text = ""
-        self.navigationController?.popViewControllerAnimated(true)
+        else
+        {
+            print("In outer else")
+            let alert = UIAlertController(
+                title: "Error",
+                message: "Please fill all details",
+                preferredStyle: UIAlertControllerStyle.Alert
+            )
+            alert.addAction(UIAlertAction(
+                title: "OK",
+                style: UIAlertActionStyle.Default,
+                handler: nil
+                ))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        
     }
     
     override func viewDidLoad() {
