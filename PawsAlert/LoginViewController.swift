@@ -14,6 +14,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var Password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "bg4.jpg")?.drawInRect(self.view.bounds)
+        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: image)
 
         // Do any additional setup after loading the view.
     }
@@ -29,9 +35,19 @@ class LoginViewController: UIViewController {
         
     let username = self.Username.text
     let password = self.Password.text
+        
+        print(username)
+        print(password)
     
+    if(username == "" || password == "")
+    {
+        let alert = UIAlertView(title: "Error", message: "Username/Password cannot be empty!", delegate: self, cancelButtonTitle: "OK")
+        alert.show()
+    }
+        
+        
     // Validate the text fields
-    if (username?.characters.count) < 5 {
+    else if (username?.characters.count) < 5 {
     let alert = UIAlertView(title: "Invalid", message: "Username must be greater than 5 characters", delegate: self, cancelButtonTitle: "OK")
     alert.show()
     Username.text = ""
@@ -88,14 +104,6 @@ class LoginViewController: UIViewController {
     })
     }
 }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

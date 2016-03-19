@@ -128,6 +128,7 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
                     preferredStyle: UIAlertControllerStyle.Alert
                 )
                 
+                
                 alert.addAction(UIAlertAction(
                     title: "OK",
                     style: UIAlertActionStyle.Default,
@@ -151,6 +152,7 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
                             title: "Message",
                             message: "Donation cannot me made. Try again later",
                             preferredStyle: UIAlertControllerStyle.Alert)
+                        
                             
                             alert.addAction(UIAlertAction(
                                 title: "OK",
@@ -167,6 +169,7 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
                             message: "You have successfully made your Donation.",
                             preferredStyle: UIAlertControllerStyle.Alert
                         )
+                       
                         
                         alert.addAction(UIAlertAction(
                             title: "OK",
@@ -190,12 +193,13 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         }
             catch
             {
-                print("In catch")
+               
                 let alert = UIAlertController(
                     title: "Error",
                     message: "Card number/Security/Amount should be numeric",
                     preferredStyle: UIAlertControllerStyle.Alert
                 )
+               
                 alert.addAction(UIAlertAction(
                     title: "OK",
                     style: UIAlertActionStyle.Default,
@@ -209,12 +213,13 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         
         else
         {
-            print("In outer else")
+        
             let alert = UIAlertController(
                 title: "Error",
                 message: "Please fill all details",
                 preferredStyle: UIAlertControllerStyle.Alert
             )
+           
             alert.addAction(UIAlertAction(
                 title: "OK",
                 style: UIAlertActionStyle.Default,

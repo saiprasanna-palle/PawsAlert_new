@@ -70,6 +70,7 @@ class SuccessStoriesTableViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("SuccessStory", forIndexPath: indexPath) as! SuccessStoryTableViewCell
+        cell.successStory?.font = UIFont(name: "Helvetica", size: 10)
         
         // Extract values from the PFObject to display in the table cell
         if let story = object?["StoryDetail"] as? String {
@@ -93,7 +94,7 @@ class SuccessStoriesTableViewController: PFQueryTableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 300
+        return 180
 }
 
 }

@@ -16,6 +16,12 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var EmailtextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "bg4.jpg")?.drawInRect(self.view.bounds)
+        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: image)
         // Do any additional setup after loading the view.
     }
 
@@ -32,8 +38,16 @@ class CreateAccountViewController: UIViewController {
         let email = self.EmailtextField.text
         let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         
+        
+        if(username == "" || password == "" || email == "" )
+        {
+            let alert = UIAlertView(title: "Error", message: "Username/Password/Email cannot be empty!", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+        }
+
+        
         // Validate the text fields
-        if (username?.characters.count) < 5 {
+      else  if (username?.characters.count) < 5 {
             let alert = UIAlertView(title: "Invalid", message: "Username must be greater than 5 characters", delegate: self, cancelButtonTitle: "OK")
             alert.show()
             self.UsernameTextField.text = ""

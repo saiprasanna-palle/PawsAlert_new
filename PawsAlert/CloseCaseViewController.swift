@@ -70,6 +70,7 @@ class CloseCaseViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("userPetCell", forIndexPath: indexPath) as! UserPetsCellTableViewCell
+        cell.petName?.font = UIFont(name: "Helvetica", size: 14)
         
         // Extract values from the PFObject to display in the table cell
         if let name = object?["Name"] as? String {
@@ -91,7 +92,7 @@ class CloseCaseViewController: PFQueryTableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 80
+        return 75
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

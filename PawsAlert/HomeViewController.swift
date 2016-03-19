@@ -12,17 +12,24 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "bg4.jpg")?.drawInRect(self.view.bounds)
+        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: image)
 
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func signIn(sender: AnyObject) {
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-
-    @IBAction func signIn(sender: AnyObject) {
     }
     
     
@@ -30,9 +37,9 @@ class HomeViewController: UIViewController {
     }
     
     
-    @IBAction func forgotPassword(sender: AnyObject) {
+    @IBAction func forgotPwd(sender: AnyObject) {
     }
-    
+  
     /*
     // MARK: - Navigation
 

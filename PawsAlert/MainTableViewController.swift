@@ -89,6 +89,9 @@ class MainTableViewController: PFQueryTableViewController{
         
         let cell = tableView.dequeueReusableCellWithIdentifier("myPetCell", forIndexPath: indexPath) as! PetTableViewCell
         
+        cell.PetName?.font = UIFont(name: "Helvetica", size: 14)
+        cell.PetDetail?.font = UIFont(name: "Helvetica", size: 12)
+        
         // Extract values from the PFObject to display in the table cell
         if let name = object?["Name"] as? String {
             //   cell.textLabel?.text = name
@@ -116,7 +119,7 @@ class MainTableViewController: PFQueryTableViewController{
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 80
+        return 75
     }
     
     
