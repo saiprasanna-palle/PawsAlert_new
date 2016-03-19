@@ -30,7 +30,7 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
     let foundPaw : UIImage = UIImage(named: "FOUND_PAW")!
     let lostPawSelected : UIImage = UIImage(named: "LOST_PAW_SELECTED")!
     let lostPaw : UIImage = UIImage(named: "LOST_PAW")!
-    var str : String = "FOUND"
+    var str : String = "Found"
 
     
     
@@ -62,7 +62,7 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
     @IBAction func SubmitAction(sender: UIButton) {
         
         if lostSelected {
-            str = "LOST"
+            str = "Lost"
         }
         
         let Pet : PetSet = PetSet(
@@ -100,9 +100,45 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
         
         //    let userPhoto = PFObject(className: "TestClass")
         object["imageFile"] = imageFile
-        object.saveInBackground()
+        
+        
+        
+        object.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if error != nil {
+                let alert = UIAlertController(
+                    title: "Message",
+                    message: "Cannot report Pet. Try again later",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                
+                
+                alert.addAction(UIAlertAction(
+                    title: "OK",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil
+                    ))
+                self.presentViewController(alert, animated: true, completion: nil)
+                self.navigationController?.popViewControllerAnimated(true)
+                
+            } else {
+                
+                let alert = UIAlertController(
+                    title: "Message",
+                    message: "Pet successfully addded",
+                    preferredStyle: UIAlertControllerStyle.Alert
+                )
+                
+                    alert.addAction(UIAlertAction(
+                        title: "OK",
+                        style: UIAlertActionStyle.Default,
+                        handler: nil
+                        ))
+                    self.presentViewController(alert, animated: true, completion: nil)
         
         self.navigationController?.popViewControllerAnimated(true)
+            }
+            
+        }
         
     }
     

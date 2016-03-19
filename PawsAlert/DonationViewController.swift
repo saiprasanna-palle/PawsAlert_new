@@ -110,9 +110,6 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
                     message: "Card number should be only 16 digits",
                     preferredStyle: UIAlertControllerStyle.Alert
                 )
-                let attributedString = NSAttributedString(string: "Title", attributes: [
-                    NSFontAttributeName : UIFont.systemFontOfSize(12)])
-                alert.setValue(attributedString, forKey: "attributedTitle")
                 alert.addAction(UIAlertAction(
                     title: "OK",
                     style: UIAlertActionStyle.Default,
@@ -130,9 +127,7 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
                     message: "Security code can only be 3 digits",
                     preferredStyle: UIAlertControllerStyle.Alert
                 )
-                let attributedString = NSAttributedString(string: "Title", attributes: [
-                    NSFontAttributeName : UIFont.systemFontOfSize(12)])
-                alert.setValue(attributedString, forKey: "attributedTitle")
+                
                 
                 alert.addAction(UIAlertAction(
                     title: "OK",
@@ -157,9 +152,7 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
                             title: "Message",
                             message: "Donation cannot me made. Try again later",
                             preferredStyle: UIAlertControllerStyle.Alert)
-                        let attributedString = NSAttributedString(string: "Title", attributes: [
-                            NSFontAttributeName : UIFont.systemFontOfSize(12)])
-                        alert.setValue(attributedString, forKey: "attributedTitle")
+                        
                             
                             alert.addAction(UIAlertAction(
                                 title: "OK",
@@ -176,9 +169,7 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
                             message: "You have successfully made your Donation.",
                             preferredStyle: UIAlertControllerStyle.Alert
                         )
-                        let attributedString = NSAttributedString(string: "Title", attributes: [
-                            NSFontAttributeName : UIFont.systemFontOfSize(12)])
-                        alert.setValue(attributedString, forKey: "attributedTitle")
+                       
                         
                         alert.addAction(UIAlertAction(
                             title: "OK",
@@ -202,15 +193,13 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         }
             catch
             {
-                print("In catch")
+               
                 let alert = UIAlertController(
                     title: "Error",
                     message: "Card number/Security/Amount should be numeric",
                     preferredStyle: UIAlertControllerStyle.Alert
                 )
-                let attributedString = NSAttributedString(string: "Title", attributes: [
-                    NSFontAttributeName : UIFont.systemFontOfSize(12)])
-                alert.setValue(attributedString, forKey: "attributedTitle")
+               
                 alert.addAction(UIAlertAction(
                     title: "OK",
                     style: UIAlertActionStyle.Default,
@@ -224,15 +213,13 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         
         else
         {
-            print("In outer else")
+        
             let alert = UIAlertController(
                 title: "Error",
                 message: "Please fill all details",
                 preferredStyle: UIAlertControllerStyle.Alert
             )
-            let attributedString = NSAttributedString(string: "Title", attributes: [
-                NSFontAttributeName : UIFont.systemFontOfSize(12)])
-            alert.setValue(attributedString, forKey: "attributedTitle")
+           
             alert.addAction(UIAlertAction(
                 title: "OK",
                 style: UIAlertActionStyle.Default,
