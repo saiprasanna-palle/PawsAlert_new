@@ -53,7 +53,7 @@ class CloseCaseViewController: PFQueryTableViewController {
     override func queryForTable() -> PFQuery {
         let query = PFQuery(className: "PA")
          query.whereKey("fromUser", equalTo:PFUser.currentUser()!)
-        query.cachePolicy = .CacheElseNetwork
+        query.cachePolicy = .NetworkElseCache
         
         if (self.objects!.count == 0){
             query.cachePolicy = .NetworkElseCache

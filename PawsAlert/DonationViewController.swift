@@ -49,6 +49,7 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var SecCode: UITextField!
     
     
+    
   
 
     @IBAction func tenDollar(sender: AnyObject) {
@@ -90,6 +91,7 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         cardNumber = CardNum.text!
         SCode = SecCode.text!
         Amount = AmountField.text!
+        var amt : Int?
         
         if (Fname != "" && Lname != "" && cardNumber != "" && SCode != "" && Amount != "")
         {
@@ -98,8 +100,69 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         {
             
            let cardnum = try Int32(cardNumber)
+            }
+        catch
+        {
+            
+            let alert = UIAlertController(
+                title: "Error",
+                message: "Card number should be numeric",
+                preferredStyle: UIAlertControllerStyle.Alert
+            )
+            
+            alert.addAction(UIAlertAction(
+                title: "OK",
+                style: UIAlertActionStyle.Default,
+                handler: nil
+                ))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            }
+
+            do
+            {
             let secCode = try Int(SCode)
-            let amt = try Int(Amount)
+            }
+            catch
+            {
+                
+                let alert = UIAlertController(
+                    title: "Error",
+                    message: "Security should be numeric",
+                    preferredStyle: UIAlertControllerStyle.Alert
+                )
+                
+                alert.addAction(UIAlertAction(
+                    title: "OK",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil
+                    ))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+            }
+            do
+            {
+
+            amt = try Int(Amount)
+            }
+            catch
+            {
+                
+                let alert = UIAlertController(
+                    title: "Error",
+                    message: "Amount should be numeric",
+                    preferredStyle: UIAlertControllerStyle.Alert
+                )
+                
+                alert.addAction(UIAlertAction(
+                    title: "OK",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil
+                    ))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+            }
+
             print(AmountField.text!)
             print(amt)
             
@@ -191,25 +254,7 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
                         }
             
         }
-            catch
-            {
-               
-                let alert = UIAlertController(
-                    title: "Error",
-                    message: "Card number/Security/Amount should be numeric",
-                    preferredStyle: UIAlertControllerStyle.Alert
-                )
-               
-                alert.addAction(UIAlertAction(
-                    title: "OK",
-                    style: UIAlertActionStyle.Default,
-                    handler: nil
-                    ))
-                self.presentViewController(alert, animated: true, completion: nil)
-
-            }
-            
-        }
+        
         
         else
         {
@@ -236,10 +281,15 @@ class DonationViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         // Do any additional setup after loading the view, typically from a nib.
        // self.navigationItem.leftBarButtonItem?.enabled = YES
         //write in save nethod
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg4.jpg")!)
+       
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "bg4.jpg")?.drawInRect(self.view.bounds)
+        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: image)
         
         messsageLabel.layer.borderWidth = 0
-        messsageLabel.layer.backgroundColor = UIColor(patternImage: UIImage(named: "bg4.jpg")!).CGColor
+      //  messsageLabel.layer.backgroundColor = UIColor(patternImage: UIImage(named: "bg4.jpg")!).CGColor
 
         if (senderButton == "Donate Money")
         {

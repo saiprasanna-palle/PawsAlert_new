@@ -16,10 +16,13 @@ class DonateItemsViewController: UIViewController{
     @IBOutlet weak var address2: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-     self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg4.jpg")!)
-        message.layer.backgroundColor = UIColor(patternImage: UIImage(named: "bg4.jpg")!).CGColor
- address1.layer.backgroundColor = UIColor(patternImage: UIImage(named: "bg4.jpg")!).CGColor
-         address2.layer.backgroundColor = UIColor(patternImage: UIImage(named: "bg4.jpg")!).CGColor
+        
+     
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "bg4.jpg")?.drawInRect(self.view.bounds)
+        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: image)
     }
     
     override func didReceiveMemoryWarning() {

@@ -56,7 +56,7 @@ class SuccessStoriesTableViewController: PFQueryTableViewController {
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery {
         let query = PFQuery(className: "Stories")
-        query.cachePolicy = .CacheElseNetwork
+        query.cachePolicy = .NetworkElseCache
         
         if (self.objects!.count == 0){
             query.cachePolicy = .NetworkElseCache
@@ -94,7 +94,7 @@ class SuccessStoriesTableViewController: PFQueryTableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 180
+        return 150
 }
 
 }
