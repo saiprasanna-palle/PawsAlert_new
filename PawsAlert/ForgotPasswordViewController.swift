@@ -14,6 +14,11 @@ class ForgotPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "bg4.jpg")?.drawInRect(self.view.bounds)
+        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: image)
         // Do any additional setup after loading the view.
     }
 
@@ -37,16 +42,22 @@ class ForgotPasswordViewController: UIViewController {
         let email = self.EmailTextfield.text
         let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         
+        if(email == "" || (email?.characters.count) < 8)
+        {
+            let alert = UIAlertView(title: "Error", message: "Enter a valid email address!", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+            self.EmailTextfield.text = ""
+        }
+        
+        else
+        {
         // Send a request to reset a password
         PFUser.requestPasswordResetForEmailInBackground(finalEmail)
         
         var alert = UIAlertController (title: "Password Reset", message: "An email containing information on how to reset your password has been sent to " + finalEmail + ".", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-        let attributedString = NSAttributedString(string: "Title", attributes: [
-            NSFontAttributeName : UIFont.systemFontOfSize(12)])
-        alert.setValue(attributedString, forKey: "attributedTitle")
         self.presentViewController(alert, animated: true, completion: nil)
         EmailTextfield.text = ""
-        
+    }
     }
 }

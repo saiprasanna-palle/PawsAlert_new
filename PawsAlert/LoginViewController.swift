@@ -14,6 +14,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var Password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "bg4.jpg")?.drawInRect(self.view.bounds)
+        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: image)
 
         // Do any additional setup after loading the view.
     }
@@ -29,13 +35,20 @@ class LoginViewController: UIViewController {
         
     let username = self.Username.text
     let password = self.Password.text
+        
+        print(username)
+        print(password)
     
+    if(username == "" || password == "")
+    {
+        let alert = UIAlertView(title: "Error", message: "Username/Password cannot be empty!", delegate: self, cancelButtonTitle: "OK")
+        alert.show()
+    }
+        
+        
     // Validate the text fields
-    if (username?.characters.count) < 5 {
+    else if (username?.characters.count) < 5 {
     let alert = UIAlertView(title: "Invalid", message: "Username must be greater than 5 characters", delegate: self, cancelButtonTitle: "OK")
-    let attributedString = NSAttributedString(string: "Title", attributes: [
-            NSFontAttributeName : UIFont.systemFontOfSize(12)])
-    alert.setValue(attributedString, forKey: "attributedTitle")
     alert.show()
     Username.text = ""
     Username.highlighted = true
@@ -44,9 +57,6 @@ class LoginViewController: UIViewController {
     
     else if (password?.characters.count) < 8 {
     let alert = UIAlertView(title: "Invalid", message: "Password must be greater than 8 characters", delegate: self, cancelButtonTitle: "OK")
-        let attributedString = NSAttributedString(string: "Title", attributes: [
-            NSFontAttributeName : UIFont.systemFontOfSize(12)])
-        alert.setValue(attributedString, forKey: "attributedTitle")
     alert.show()
     Password.text = ""
     Password.highlighted = true
@@ -68,9 +78,6 @@ class LoginViewController: UIViewController {
     
     if ((user) != nil) {
     let alert = UIAlertView(title: "Success", message: "Logged In", delegate: self, cancelButtonTitle: "OK")
-        let attributedString = NSAttributedString(string: "Title", attributes: [
-            NSFontAttributeName : UIFont.systemFontOfSize(12)])
-        alert.setValue(attributedString, forKey: "attributedTitle")
     alert.show()
         
         if user?.username == "admin"
@@ -89,9 +96,6 @@ class LoginViewController: UIViewController {
     
     } else {
     let alert = UIAlertView(title: "Error", message: "Cannot login. Please try again later!", delegate: self, cancelButtonTitle: "OK")
-    let attributedString = NSAttributedString(string: "Title", attributes: [
-            NSFontAttributeName : UIFont.systemFontOfSize(12)])
-        alert.setValue(attributedString, forKey: "attributedTitle")
     alert.show()
     self.Username.text = ""
     self.Password.text = ""

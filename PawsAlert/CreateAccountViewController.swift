@@ -16,6 +16,12 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var EmailtextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "bg4.jpg")?.drawInRect(self.view.bounds)
+        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: image)
         // Do any additional setup after loading the view.
     }
 
@@ -32,12 +38,17 @@ class CreateAccountViewController: UIViewController {
         let email = self.EmailtextField.text
         let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         
+        
+        if(username == "" || password == "" || email == "" )
+        {
+            let alert = UIAlertView(title: "Error", message: "Username/Password/Email cannot be empty!", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+        }
+
+        
         // Validate the text fields
-        if (username?.characters.count) < 5 {
+      else  if (username?.characters.count) < 5 {
             let alert = UIAlertView(title: "Invalid", message: "Username must be greater than 5 characters", delegate: self, cancelButtonTitle: "OK")
-            let attributedString = NSAttributedString(string: "Title", attributes: [
-                NSFontAttributeName : UIFont.systemFontOfSize(12)])
-            alert.setValue(attributedString, forKey: "attributedTitle")
             alert.show()
             self.UsernameTextField.text = ""
             self.UsernameTextField.highlighted = true
@@ -47,9 +58,6 @@ class CreateAccountViewController: UIViewController {
         else if (username == "admin")
         {
             let alert = UIAlertView(title: "Invalid", message: "Username cannot be equal to admin", delegate: self, cancelButtonTitle: "OK")
-            let attributedString = NSAttributedString(string: "Title", attributes: [
-                NSFontAttributeName : UIFont.systemFontOfSize(12)])
-            alert.setValue(attributedString, forKey: "attributedTitle")
             alert.show()
             UsernameTextField.text = ""
             PasswordTextField.highlighted = true
@@ -58,18 +66,12 @@ class CreateAccountViewController: UIViewController {
         
         else if (password?.characters.count) < 8 {
             let alert = UIAlertView(title: "Invalid", message: "Password must be greater than 8 characters", delegate: self, cancelButtonTitle: "OK")
-            let attributedString = NSAttributedString(string: "Title", attributes: [
-                NSFontAttributeName : UIFont.systemFontOfSize(12)])
-            alert.setValue(attributedString, forKey: "attributedTitle")
             alert.show()
             self.PasswordTextField.text = ""
              self.PasswordTextField.highlighted = true
             
         } else if (email?.characters.count) < 8 {
             let alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "OK")
-            let attributedString = NSAttributedString(string: "Title", attributes: [
-                NSFontAttributeName : UIFont.systemFontOfSize(12)])
-            alert.setValue(attributedString, forKey: "attributedTitle")
             alert.show()
              self.EmailtextField.text = ""
             self.EmailtextField.highlighted = true
@@ -98,17 +100,11 @@ class CreateAccountViewController: UIViewController {
                 spinner.stopAnimating()
                 if ((error) != nil) {
                     let alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
-                    let attributedString = NSAttributedString(string: "Title", attributes: [
-                        NSFontAttributeName : UIFont.systemFontOfSize(12)])
-                    alert.setValue(attributedString, forKey: "attributedTitle")
                     alert.show()
                     
                 } else {
                     let alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        let attributedString = NSAttributedString(string: "Title", attributes: [
-                            NSFontAttributeName : UIFont.systemFontOfSize(12)])
-                        alert.setValue(attributedString, forKey: "attributedTitle")
                         alert.show()
                         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("main") as! UIViewController
                         self.presentViewController(viewController, animated: true, completion: nil)
