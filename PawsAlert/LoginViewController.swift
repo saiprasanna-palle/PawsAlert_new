@@ -33,6 +33,9 @@ class LoginViewController: UIViewController {
     // Validate the text fields
     if (username?.characters.count) < 5 {
     let alert = UIAlertView(title: "Invalid", message: "Username must be greater than 5 characters", delegate: self, cancelButtonTitle: "OK")
+    let attributedString = NSAttributedString(string: "Title", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(12)])
+    alert.setValue(attributedString, forKey: "attributedTitle")
     alert.show()
     Username.text = ""
     Username.highlighted = true
@@ -41,6 +44,9 @@ class LoginViewController: UIViewController {
     
     else if (password?.characters.count) < 8 {
     let alert = UIAlertView(title: "Invalid", message: "Password must be greater than 8 characters", delegate: self, cancelButtonTitle: "OK")
+        let attributedString = NSAttributedString(string: "Title", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(12)])
+        alert.setValue(attributedString, forKey: "attributedTitle")
     alert.show()
     Password.text = ""
     Password.highlighted = true
@@ -62,6 +68,9 @@ class LoginViewController: UIViewController {
     
     if ((user) != nil) {
     let alert = UIAlertView(title: "Success", message: "Logged In", delegate: self, cancelButtonTitle: "OK")
+        let attributedString = NSAttributedString(string: "Title", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(12)])
+        alert.setValue(attributedString, forKey: "attributedTitle")
     alert.show()
         
         if user?.username == "admin"
@@ -80,6 +89,9 @@ class LoginViewController: UIViewController {
     
     } else {
     let alert = UIAlertView(title: "Error", message: "Cannot login. Please try again later!", delegate: self, cancelButtonTitle: "OK")
+    let attributedString = NSAttributedString(string: "Title", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(12)])
+        alert.setValue(attributedString, forKey: "attributedTitle")
     alert.show()
     self.Username.text = ""
     self.Password.text = ""
@@ -88,14 +100,6 @@ class LoginViewController: UIViewController {
     })
     }
 }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

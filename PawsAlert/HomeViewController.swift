@@ -21,17 +21,6 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    @IBAction func signIn(sender: AnyObject) {
-    }
-    
-    
-    @IBAction func createAccount(sender: AnyObject) {
-    }
-    
-    
-    @IBAction func forgotPassword(sender: AnyObject) {
-    }
     
     /*
     // MARK: - Navigation

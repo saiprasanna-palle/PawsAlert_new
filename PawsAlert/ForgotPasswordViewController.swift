@@ -42,6 +42,9 @@ class ForgotPasswordViewController: UIViewController {
         
         var alert = UIAlertController (title: "Password Reset", message: "An email containing information on how to reset your password has been sent to " + finalEmail + ".", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        let attributedString = NSAttributedString(string: "Title", attributes: [
+            NSFontAttributeName : UIFont.systemFontOfSize(12)])
+        alert.setValue(attributedString, forKey: "attributedTitle")
         self.presentViewController(alert, animated: true, completion: nil)
         EmailTextfield.text = ""
         

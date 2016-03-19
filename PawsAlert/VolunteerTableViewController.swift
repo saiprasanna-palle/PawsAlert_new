@@ -61,6 +61,8 @@ class VolunteerTableViewController: PFQueryTableViewController {
         var contact : String?
         
         let cell = tableView.dequeueReusableCellWithIdentifier("volunteer", forIndexPath: indexPath) as! PFTableViewCell
+        cell.textLabel?.font = UIFont(name: "Helvetica", size: 14)
+        cell.detailTextLabel?.font = UIFont(name: "Helvetica", size: 12)
         
         // Extract values from the PFObject to display in the table cell
       if let place = object?["Place"] as? String {
