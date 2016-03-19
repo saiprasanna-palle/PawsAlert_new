@@ -103,17 +103,31 @@ class CloseCaseViewController: PFQueryTableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         // you need to implement this method too or you can't swipe to display the actions
-        
+        print (self.objects?.count)
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            
             var object = self.objectAtIndexPath(indexPath)
-            //self.objects.removeAtIndex(indexpath)
-            object!.deleteInBackgroundWithBlock({ (Bool, NSError) -> Void in
+            self.removeObjectAtIndexPath(indexPath)
+            
+            object!.deleteInBackgroundWithBlock({ (Bool success, NSError error) -> Void in
+
+                if(success && error == nil){
                 self.loadObjects()
-                print("its alive...sort of")
+                
+                        print("block")
+                        print (self.objects?.count)
+                        tableView.reloadData()
+                }else{
+                print (error)
+                }
             })
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            tableView.reloadData()
+            
         }
+        
+       // self.queryForTable()
+       // self.removeObjectAtIndexPath(indexPath)
+        print (self.objects?.count)
+        tableView.reloadData()
     }
 
     
