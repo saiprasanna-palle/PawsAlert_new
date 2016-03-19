@@ -118,7 +118,10 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
                     handler: nil
                     ))
                 self.presentViewController(alert, animated: true, completion: nil)
-                self.navigationController?.popViewControllerAnimated(true)
+              //  self.navigationController?.popViewControllerAnimated(true)
+                
+                self.PetNameOutLet.text = ""
+                self.PetDetailsOutlet.text = ""
                 
             } else {
                 
@@ -134,8 +137,10 @@ class ReportViewController: UIViewController,UIPickerViewDataSource,UIImagePicke
                         handler: nil
                         ))
                     self.presentViewController(alert, animated: true, completion: nil)
+                self.PetNameOutLet.text = ""
+                self.PetDetailsOutlet.text = ""
         
-        self.navigationController?.popViewControllerAnimated(true)
+      //  self.navigationController?.popViewControllerAnimated(true)
             }
             
         }

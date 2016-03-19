@@ -21,7 +21,10 @@ class MainTableViewController: PFQueryTableViewController{
     var flag : Int = 0
     
     override func viewWillAppear(animated: Bool) {
+         self.loadObjects()
+         self.tableView.separatorColor = UIColor(red: 0.5, green: 0.9, blue: 0.1, alpha: 1)
         tableView.reloadData()
+
     }
     
     override func viewDidLoad() {
@@ -119,7 +122,7 @@ class MainTableViewController: PFQueryTableViewController{
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 75
+        return 76
     }
     
     

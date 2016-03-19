@@ -1013,16 +1013,6 @@
                                     <action selector="useCamera:" destination="wqT-0u-kdk" eventType="touchUpInside" id="sSR-51-0w5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRK-B9-eAd">
-                                <rect key="frame" x="158" y="596" width="97" height="26"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="Submit">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SubmitAction:" destination="wqT-0u-kdk" eventType="touchUpInside" id="oYv-7D-VI3"/>
-                                </connections>
-                            </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQY-IF-3gS">
                                 <rect key="frame" x="103" y="188" width="206" height="129"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1061,6 +1051,17 @@
                                 <state key="normal" title="Lost" image="LOST_PAW"/>
                                 <connections>
                                     <action selector="LostPawAction:" destination="wqT-0u-kdk" eventType="touchUpInside" id="Btp-de-maL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRK-B9-eAd">
+                                <rect key="frame" x="70" y="601" width="273" height="22"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="0.20883155240000001" blue="0.32007878470000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="SubmitAction:" destination="wqT-0u-kdk" eventType="touchUpInside" id="oYv-7D-VI3"/>
                                 </connections>
                             </button>
                         </subviews>
